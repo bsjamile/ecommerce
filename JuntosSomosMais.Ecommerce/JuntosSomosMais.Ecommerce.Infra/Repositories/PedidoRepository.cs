@@ -26,6 +26,8 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             var result = _context
                 .Pedidos
                 .Include(i => i.PedidoProdutos)
+                    .ThenInclude(i => i.Produto)
+                .Include(i => i.Cliente)
                 .AsQueryable();
 
             if (filter.Id != 0)

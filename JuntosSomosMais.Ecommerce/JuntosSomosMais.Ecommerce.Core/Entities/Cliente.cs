@@ -12,7 +12,8 @@ namespace JuntosSomosMais.Ecommerce.Core.Entities
         public string Telefone { get; private set; }        
         public string Email { get; private set; }
         public string Senha { get; private set; }
-        public List<Endereco> Enderecos { get; private set; }
+        public Endereco Endereco { get; private set; }
+        public int IdEndereco { get; private set; }
         public List<Pedido> Pedidos { get; private set; }
     }
 }

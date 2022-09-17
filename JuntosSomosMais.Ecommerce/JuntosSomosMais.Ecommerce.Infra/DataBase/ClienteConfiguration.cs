@@ -28,6 +28,9 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
             builder.Property(p => p.Senha)
                 .HasColumnType("VARCHAR(20)")
                 .IsRequired();
+            builder.HasOne(fk => fk.Endereco)
+                .WithOne(fk => fk.Cliente)
+                .HasForeignKey<Cliente>(fk => fk.IdEndereco);
         }
     }
 }

@@ -35,9 +35,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
             builder.Property(p => p.Pais)
                 .HasColumnType("VARCHAR(20)")
                 .IsRequired();
-            builder.HasOne(fk => fk.Cliente)
-                .WithMany(fk => fk.Enderecos)
-                .HasForeignKey(fk => fk.IdCliente);
         }
     }
 }

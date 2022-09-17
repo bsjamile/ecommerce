@@ -37,6 +37,9 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("VARCHAR(50)");
 
+                    b.Property<int>("IdEndereco")
+                        .HasColumnType("int");
+
                     b.Property<string>("Nome")
                         .IsRequired()
                         .HasColumnType("VARCHAR(50)");
@@ -50,6 +53,9 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                         .HasColumnType("VARCHAR(20)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdEndereco")
+                        .IsUnique();
 
                     b.ToTable("cliente");
                 });
@@ -80,9 +86,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                         .IsRequired()
                         .HasColumnType("CHAR(2)");
 
-                    b.Property<int>("IdCliente")
-                        .HasColumnType("int");
-
                     b.Property<string>("Numero")
                         .IsRequired()
                         .HasColumnType("VARCHAR(10)");
@@ -99,8 +102,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                         .HasColumnType("VARCHAR(50)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("IdCliente");
 
                     b.ToTable("endereco");
                 });
@@ -169,15 +170,15 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                     b.ToTable("produto");
                 });
 
-            modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Endereco", b =>
+            modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Cliente", b =>
                 {
-                    b.HasOne("JuntosSomosMais.Ecommerce.Core.Entities.Cliente", "Cliente")
-                        .WithMany("Enderecos")
-                        .HasForeignKey("IdCliente")
+                    b.HasOne("JuntosSomosMais.Ecommerce.Core.Entities.Endereco", "Endereco")
+                        .WithOne("Cliente")
+                        .HasForeignKey("JuntosSomosMais.Ecommerce.Core.Entities.Cliente", "IdEndereco")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Cliente");
+                    b.Navigation("Endereco");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Pedido", b =>
@@ -212,9 +213,12 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Cliente", b =>
                 {
-                    b.Navigation("Enderecos");
-
                     b.Navigation("Pedidos");
+                });
+
+            modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Endereco", b =>
+                {
+                    b.Navigation("Cliente");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Pedido", b =>

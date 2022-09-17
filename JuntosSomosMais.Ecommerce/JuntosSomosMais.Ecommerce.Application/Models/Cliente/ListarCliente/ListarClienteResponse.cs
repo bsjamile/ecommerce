@@ -13,6 +13,6 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        public List<Endereco> Enderecos { get; set; }
+        public ListarClienteEnderecoResponse Endereco { get; set; }
     }
 }
