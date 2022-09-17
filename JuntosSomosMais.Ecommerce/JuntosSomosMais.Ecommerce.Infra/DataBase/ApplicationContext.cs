@@ -22,7 +22,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
             modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
             modelBuilder.ApplyConfiguration(new PedidoProdutoConfiguration());
-
         }
 
     }

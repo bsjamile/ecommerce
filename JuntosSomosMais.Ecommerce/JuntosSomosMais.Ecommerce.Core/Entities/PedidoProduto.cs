@@ -8,6 +8,7 @@ namespace JuntosSomosMais.Ecommerce.Core.Entities
         {
             IdProduto = idProduto;
         }
+        public int Id { get; private set; }
         public int IdPedido { get; private set; }
         public Pedido Pedido { get; private set; }
         public int IdProduto { get; private set; }

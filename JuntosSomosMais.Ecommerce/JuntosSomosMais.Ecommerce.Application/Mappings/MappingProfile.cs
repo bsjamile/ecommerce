@@ -14,12 +14,11 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
             CreateMap<Cliente, ListarClienteResponse>()
                 .ForMember(dest => dest.Id, fonte => fonte.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Nome, fonte => fonte.MapFrom(src => src.Nome))
-                .ForMember(dest => dest.DataNasc, fonte => fonte.MapFrom(src => src.DataNasc))                
+                .ForMember(dest => dest.DataNasc, fonte => fonte.MapFrom(src => src.DataNasc))
                 .ForMember(dest => dest.CPF, fonte => fonte.MapFrom(src => src.CPF))
                 .ForMember(dest => dest.Telefone, fonte => fonte.MapFrom(src => src.Telefone))
                 .ForMember(dest => dest.Email, fonte => fonte.MapFrom(src => src.Email))
-                .ForMember(dest => dest.Senha, fonte => fonte.MapFrom(src => src.Senha))
-                .ForMember(dest => dest.Enderecos, fonte => fonte.MapFrom(src => src.Enderecos));
+                .ForMember(dest => dest.Senha, fonte => fonte.MapFrom(src => src.Senha));
 
             CreateMap<GetFilterPorId, Pedido> ()
                 .ForMember(dest => dest.Id, fonte => fonte.MapFrom(src => src.Id));

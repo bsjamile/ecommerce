@@ -28,8 +28,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
             builder.Property(p => p.Senha)
                 .HasColumnType("VARCHAR(20)")
                 .IsRequired();
-
-            //como colocar indicando o unique
         }
     }
 }

@@ -8,10 +8,17 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
     {
         public void Configure(EntityTypeBuilder<PedidoProduto> builder)
         {
-            builder.HasKey(x => new { x.IdPedido, x.IdProduto });
+            builder.ToTable("pedido_produto");
+            builder.HasKey(pk => pk.Id);
             builder.Property(p => p.Quantidade)
                 .HasColumnType("INT")
                 .IsRequired();
+            builder.HasOne(fk => fk.Pedido)
+                .WithMany(fk => fk.PedidoProdutos)
+                .HasForeignKey(fk => fk.IdPedido);
+            builder.HasOne(fk => fk.Produto)
+                .WithMany(fk => fk.PedidoProdutos)
+                .HasForeignKey(fk => fk.IdProduto);
         }
     }
 }

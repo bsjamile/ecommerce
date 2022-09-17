@@ -24,6 +24,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
         {
             return await _context
                 .Clientes
+                //.Include(i => i.Enderecos)
                 .AsNoTracking()
                 .ToListAsync();
         }

@@ -75,7 +75,7 @@ namespace JuntosSomosMais.Ecommerce.API
                 app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "JuntosSomosMais.Ecommerce.API v1"));
             }
 
-            //context.Database.Migrate();
+            context.Database.Migrate();
 
             app.UseHttpsRedirection();
 

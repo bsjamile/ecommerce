@@ -14,7 +14,7 @@ namespace JuntosSomosMais.Ecommerce.Core.Entities
 
         protected Pedido(){}
 
-        public int Id{get; private set; }
+        public int Id {get; private set; }
         public DateTime DataPedido { get; private set; }
         public int IdCliente { get; private set; }
         public Cliente Cliente { get; private set; }
