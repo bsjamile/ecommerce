@@ -21,23 +21,28 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             await _context.SaveChangesAsync();
         }
 
-        public async Task<Pedido> ConsultarPorId(GetFilterPorId filter)
+
+
+        public async Task<Pedido> ConsultarPorId(int id)
         {
             var result = _context
-                .Pedidos
-                .Include(i => i.PedidoProdutos)
-                    .ThenInclude(i => i.Produto)
-                .Include(i => i.Cliente)
-                .AsQueryable();
+                 .Pedidos
+                 .Include(i => i.PedidoProdutos)
+                     .ThenInclude(i => i.Produto)
+                 .Include(i => i.Cliente)
+                 .AsQueryable();
 
-            if (filter.Id != 0)
+            if (id != 0)
             {
-                result = result.Where(w => w.Id == filter.Id);
+                result = result.Where(w => w.Id == id);
+                return await result
+                 .AsNoTracking()
+                 .FirstOrDefaultAsync(); //Vai no banco e busca = materializacao de busca
             }
-
-            return await result
-                .AsNoTracking()
-                .FirstOrDefaultAsync(); //Vai no banco e busca = materializacao de busca
+            else
+            {
+                return await Task.FromResult(_context.Find<Pedido>(id));
+            }             
         }
     }
 }

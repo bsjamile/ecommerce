@@ -6,6 +6,6 @@ namespace JuntosSomosMais.Ecommerce.Core.Repositories
 {
     public interface IPedidoRepository : IRepository<Pedido>
     {
-        Task<Pedido> ConsultarPorId(GetFilterPorId filter);
+        Task<Pedido> ConsultarPorId(int id);
     }
 }

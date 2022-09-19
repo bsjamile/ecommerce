@@ -11,10 +11,10 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     [Route("api/produtos")]
     public class ProdutosController : ControllerBase
     {
-        public readonly IUseCaseAsync<int, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
+        public readonly IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
         public readonly IUseCaseAsync<CadastrarProdutoRequest, CadastrarProdutoResponse> _useCaseCadastrarProduto;
 
-        public ProdutosController(IUseCaseAsync<int, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
+        public ProdutosController(IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
                                  IUseCaseAsync<CadastrarProdutoRequest, CadastrarProdutoResponse> useCaseCadastrarProduto)
         {
             _useCaseConsultarProdutoPorId = useCaseConsultarProdutoPorId;
@@ -22,11 +22,11 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<ConsultarProdutoPorIdResponse>> GetProdutoPorId([FromQuery] int id)
+        public async Task<ActionResult<ConsultarProdutoPorIdResponse>> GetProdutoPorId([FromQuery] GetFilterProduto filter)
         {
-            var response = await _useCaseConsultarProdutoPorId.ExecuteAsync(id);
+            var response = await _useCaseConsultarProdutoPorId.ExecuteAsync(filter);
             if (response == null)
-                return new NotFoundObjectResult("Não encontrado");
+                return new NotFoundObjectResult("Digite um ID ou um Produto Válido!");
 
             return new OkObjectResult(response);
         }

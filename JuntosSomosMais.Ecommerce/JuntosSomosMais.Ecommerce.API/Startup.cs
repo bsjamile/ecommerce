@@ -45,10 +45,10 @@ namespace JuntosSomosMais.Ecommerce.API
             services.AddScoped<IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>>, ListarClienteUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarClienteRequest, CadastrarClienteResponse>, CadastrarClienteUseCase>();
 
-            services.AddScoped<IUseCaseAsync<GetFilterPorId, ConsultarPedidoPorIdResponse>, ConsultarPedidoPorIdUseCase>();
+            services.AddScoped<IUseCaseAsync<int, ConsultarPedidoPorIdResponse>, ConsultarPedidoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarPedidoRequest, CadastrarPedidoResponse>, CadastrarPedidoUseCase>();
 
-            services.AddScoped<IUseCaseAsync<int, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
+            services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, CadastrarProdutoResponse>, CadastrarProdutoUseCase>();
 
             services.AddAutoMapper(typeof(MappingProfile));

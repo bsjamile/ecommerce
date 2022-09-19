@@ -43,6 +43,10 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
 
             CreateMap<Cliente, ConsultarPedidoPorIdClienteResponse>();
 
+            CreateMap<CadastrarPedidoProdutoRequest, PedidoProduto>()
+                .ForMember(dest => dest.IdProduto, fonte => fonte.MapFrom(src => src.IdProduto))
+                .ForMember(dest => dest.Quantidade, fonte => fonte.MapFrom(src => src.Quantidade));
+
             CreateMap<PedidoProduto, ConsultarPedidoPorIdProdutoResponse>()
                 .ForMember(dest => dest.Produto, fonte => fonte.MapFrom(src => src.Produto.Nome))
                 .ForMember(dest => dest.Quantidade, fonte => fonte.MapFrom(src => src.Quantidade))

@@ -24,13 +24,10 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
             if (request == null)
                 return null;
 
-            //var pedido = _mapper.Map<Pedido>(request);
-
             var pedidoProdutos = new List<PedidoProduto>();
 
-            foreach (var quantidade in request.Quantidade)             
-                foreach (var produtoId in request.IdProdutos)
-                    pedidoProdutos.Add(new PedidoProduto(produtoId, quantidade));
+            foreach (var produtos in request.Produtos)
+                pedidoProdutos.Add(new PedidoProduto(produtos.IdProduto, produtos.Quantidade));
 
             var pedido = new Pedido(DateTime.Now, request.IdCliente, pedidoProdutos);
 

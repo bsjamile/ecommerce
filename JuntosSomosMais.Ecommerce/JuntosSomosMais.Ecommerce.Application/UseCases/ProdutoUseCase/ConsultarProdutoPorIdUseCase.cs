@@ -8,7 +8,7 @@ using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
 {
-    public class ConsultarProdutoPorIdUseCase : IUseCaseAsync<int, ConsultarProdutoPorIdResponse>
+    public class ConsultarProdutoPorIdUseCase : IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>
     {
         public readonly IProdutoRepository _produtoRepository;
         public readonly IMapper _mapper;
@@ -19,9 +19,9 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
             _mapper = mapper;
         }
 
-        public Task<ConsultarProdutoPorIdResponse> ExecuteAsync(int request)
+        public Task<ConsultarProdutoPorIdResponse> ExecuteAsync(GetFilterProduto filter)
         {
-            var resposta = _produtoRepository.ConsultarPorId(request).Result;
+            var resposta = _produtoRepository.ConsultarPorId(filter).Result;
 
             var response = (ConsultarProdutoPorIdResponse)null;
 
