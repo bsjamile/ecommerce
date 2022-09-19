@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente;
 using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
+using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
@@ -25,11 +26,8 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
 
             CreateMap<Endereco, ListarClienteEnderecoResponse>();
 
-            CreateMap<Cliente, ConsultarPedidoPorIdClienteResponse>();
-
-            CreateMap<PedidoProduto, ConsultarPedidoPorIdProdutoResponse>()
-                .ForMember(dest => dest.Quantidade, fonte => fonte.MapFrom(src => src.Quantidade));
-                //.ForMember(dest => dest.Nome, fonte => fonte.(src => src.Produto.Nome));
+            CreateMap<Pedido, CadastrarPedidoRequest>()
+                .ForMember(dest => dest.IdCliente, fonte => fonte.MapFrom(src => src.IdCliente));
 
             CreateMap<CadastrarClienteRequest, Cliente>()
                 .ForMember(dest => dest.Nome, fonte => fonte.MapFrom(src => src.Nome))
@@ -37,14 +35,24 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
                 .ForMember(dest => dest.CPF, fonte => fonte.MapFrom(src => src.CPF))
                 .ForMember(dest => dest.Telefone, fonte => fonte.MapFrom(src => src.Telefone))
                 .ForMember(dest => dest.Email, fonte => fonte.MapFrom(src => src.Email))
-                .ForMember(dest => dest.Senha, fonte => fonte.MapFrom(src => src.Senha));
+                .ForMember(dest => dest.Senha, fonte => fonte.MapFrom(src => src.Senha))
+                .ForMember(dest => dest.Endereco, fonte => fonte.MapFrom(src => src.Endereco)); 
+
+            CreateMap<CadastrarClienteEnderecoRequest, Endereco>();
+
+            CreateMap<Cliente, ConsultarPedidoPorIdClienteResponse>();
+
+            CreateMap<PedidoProduto, ConsultarPedidoPorIdProdutoResponse>()
+                .ForMember(dest => dest.Produto, fonte => fonte.MapFrom(src => src.Produto.Nome))
+                .ForMember(dest => dest.Quantidade, fonte => fonte.MapFrom(src => src.Quantidade))
+                .ForMember(dest => dest.PrecoUnitario, fonte => fonte.MapFrom(src => src.Produto.Preco));
 
             CreateMap<GetFilterPorId, Pedido> ()
                 .ForMember(dest => dest.Id, fonte => fonte.MapFrom(src => src.Id));
 
             CreateMap<Pedido, ConsultarPedidoPorIdResponse>()
                 .ForMember(dest => dest.DataPedido, fonte => fonte.MapFrom(src => src.DataPedido))
-                .ForMember(dest => dest.Cliente, fonte => fonte.MapFrom(src => src.Cliente))
+                .ForMember(dest => dest.Cliente, fonte => fonte.MapFrom(src => src.Cliente))                              
                 .ForMember(dest => dest.Produtos, fonte => fonte.MapFrom(src => src.PedidoProdutos));
 
             CreateMap<GetFilterProduto, Produto>()

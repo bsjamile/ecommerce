@@ -1,8 +1,9 @@
-﻿namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente
+﻿using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
+
+namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente
 {
-    public class ListarClienteEnderecoResponse
+    public class CadastrarClienteEnderecoRequest
     {
-        public int Id { get; set; }
         public string Rua { get; set; }
         public string Bairro { get; set; }
         public string Numero { get; set; }

@@ -4,10 +4,12 @@ namespace JuntosSomosMais.Ecommerce.Core.Entities
 {
     public class PedidoProduto
     {
-        public PedidoProduto(int idProduto)
+        public PedidoProduto(int idProduto, int quantidade)
         {
             IdProduto = idProduto;
+            Quantidade = quantidade;
         }
+
         public int Id { get; private set; }
         public int IdPedido { get; private set; }
         public Pedido Pedido { get; private set; }

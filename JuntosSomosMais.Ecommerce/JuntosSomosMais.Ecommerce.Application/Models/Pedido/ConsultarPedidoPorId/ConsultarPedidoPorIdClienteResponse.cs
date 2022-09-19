@@ -8,7 +8,7 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPor
 {
     public class ConsultarPedidoPorIdClienteResponse
     {
-        public string Nome { get; set; }
-
+        public string Nome { get; private set; }
+        public string CPF { get; private set; }
     }
 }

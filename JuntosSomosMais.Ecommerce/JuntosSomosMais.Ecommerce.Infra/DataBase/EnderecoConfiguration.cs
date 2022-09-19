@@ -27,13 +27,13 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
             builder.Property(p => p.PontoDeReferencia)
                 .HasColumnType("VARCHAR(100)");
             builder.Property(p => p.Cidade)
-                .HasColumnType("VARCHAR(30)")
+                .HasColumnType("VARCHAR(50)")
                 .IsRequired();
             builder.Property(p => p.Estado)
-                .HasColumnType("CHAR(2)")
+                .HasColumnType("VARCHAR(30)")
                 .IsRequired();
             builder.Property(p => p.Pais)
-                .HasColumnType("VARCHAR(20)")
+                .HasColumnType("VARCHAR(50)")
                 .IsRequired();
         }
     }

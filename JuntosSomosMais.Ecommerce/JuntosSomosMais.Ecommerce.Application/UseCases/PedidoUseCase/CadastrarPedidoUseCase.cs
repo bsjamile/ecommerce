@@ -28,8 +28,9 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 
             var pedidoProdutos = new List<PedidoProduto>();
 
-            foreach (var produtoId in request.IdProdutos)
-                pedidoProdutos.Add(new PedidoProduto(produtoId));
+            foreach (var quantidade in request.Quantidade)             
+                foreach (var produtoId in request.IdProdutos)
+                    pedidoProdutos.Add(new PedidoProduto(produtoId, quantidade));
 
             var pedido = new Pedido(DateTime.Now, request.IdCliente, pedidoProdutos);
 

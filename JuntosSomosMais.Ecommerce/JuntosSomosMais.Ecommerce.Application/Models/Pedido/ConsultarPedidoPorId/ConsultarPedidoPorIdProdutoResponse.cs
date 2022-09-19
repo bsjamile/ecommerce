@@ -8,7 +8,9 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPor
 {
     public class ConsultarPedidoPorIdProdutoResponse
     {
-        public string Nome { get; set; }
+        public int IdProduto { get; set; }
+        public string Produto { get; set; }
         public string Quantidade { get; set; }
+        public float PrecoUnitario { get; set; }
     }
 }

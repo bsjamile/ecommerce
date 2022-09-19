@@ -1,4 +1,5 @@
-﻿using JuntosSomosMais.Ecommerce.Core.Entities;
+﻿using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
+using JuntosSomosMais.Ecommerce.Core.Entities;
 using System;
 using System.Collections.Generic;
 
@@ -12,6 +13,6 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente
         public string CPF { get; set; }
         public string Email { get; set; }
         public string Senha { get; set; }
-        public List<Endereco> Enderecos { get; set; }
+        public CadastrarClienteEnderecoRequest Endereco { get; set; }
     }
 }
