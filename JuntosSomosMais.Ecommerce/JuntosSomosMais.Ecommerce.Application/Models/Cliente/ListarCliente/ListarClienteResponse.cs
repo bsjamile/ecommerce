@@ -6,7 +6,7 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente
 {
     public class ListarClienteResponse
     {
-        public int Id { get; set; }
+        public int IdCliente { get; set; }
         public string Nome { get; set; }
         public DateTime DataNasc { get; set; }
         public string Telefone { get; set; }

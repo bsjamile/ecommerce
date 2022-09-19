@@ -15,7 +15,7 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
         public MappingProfile()
         {
             CreateMap<Cliente, ListarClienteResponse>()
-                .ForMember(dest => dest.Id, fonte => fonte.MapFrom(src => src.Id))
+                .ForMember(dest => dest.IdCliente, fonte => fonte.MapFrom(src => src.Id))
                 .ForMember(dest => dest.Nome, fonte => fonte.MapFrom(src => src.Nome))
                 .ForMember(dest => dest.DataNasc, fonte => fonte.MapFrom(src => src.DataNasc))
                 .ForMember(dest => dest.CPF, fonte => fonte.MapFrom(src => src.CPF))
@@ -24,7 +24,8 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
                 .ForMember(dest => dest.Senha, fonte => fonte.MapFrom(src => src.Senha))
                 .ForMember(dest => dest.Endereco, fonte => fonte.MapFrom(src => src.Endereco));
 
-            CreateMap<Endereco, ListarClienteEnderecoResponse>();
+            CreateMap<Endereco, ListarClienteEnderecoResponse>()
+                .ForMember(dest => dest.IdEndereco, fonte => fonte.MapFrom(src => src.Id));
 
             CreateMap<Pedido, CadastrarPedidoRequest>()
                 .ForMember(dest => dest.IdCliente, fonte => fonte.MapFrom(src => src.IdCliente));

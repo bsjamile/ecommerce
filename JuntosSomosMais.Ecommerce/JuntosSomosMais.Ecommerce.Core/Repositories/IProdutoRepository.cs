@@ -6,6 +6,6 @@ namespace JuntosSomosMais.Ecommerce.Core.Repositories
 {
     public interface IProdutoRepository : IRepository<Produto>
     {
-        Task<Produto> ConsultarPorId(GetFilterProduto filter);
+        Task<Produto> ConsultarPorId(int id);
     }
 }

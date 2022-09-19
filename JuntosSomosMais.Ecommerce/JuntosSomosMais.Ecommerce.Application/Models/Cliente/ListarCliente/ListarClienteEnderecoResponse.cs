@@ -2,7 +2,7 @@
 {
     public class ListarClienteEnderecoResponse
     {
-        public int Id { get; set; }
+        public int IdEndereco { get; set; }
         public string Rua { get; set; }
         public string Bairro { get; set; }
         public string Numero { get; set; }
