@@ -2,8 +2,11 @@
 
 namespace JuntosSomosMais.Ecommerce.Core.Repositories
 {
-    public interface IRepository<T>
+    public interface IRepository<T> 
     {
+        //foi criada para que outras interfaces herdassem tudo o que foi atribuido a essa interface
+        //e recebessem seus repectivos objetos
+
         Task Cadastrar(T obj);
     }
 }

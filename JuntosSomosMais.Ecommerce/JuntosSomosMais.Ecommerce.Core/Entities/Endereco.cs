@@ -1,6 +1,6 @@
 ﻿namespace JuntosSomosMais.Ecommerce.Core.Entities
 {
-    public class Endereco
+    public class Endereco //a entidade representa cada tabela e colunas dessa tabela no banco de dados
     {
         public int Id { get; private set; }
         public string Rua { get; private set; }

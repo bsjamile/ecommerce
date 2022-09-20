@@ -8,8 +8,8 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ClienteUseCase
 {
     public class ListarClienteUseCase : IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>>
     {
-        public readonly IClienteRepository _clienteRepository;
-        public readonly IMapper _mapper;
+        public readonly IClienteRepository _clienteRepository; //representacao do repositorio para chamar a task que deseja executar
+        public readonly IMapper _mapper; //mapper para permitir o mapeamento das informacoes
         public ListarClienteUseCase(IClienteRepository clienteRepository,
             IMapper mapper)
         {

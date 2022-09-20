@@ -40,8 +40,12 @@ namespace JuntosSomosMais.Ecommerce.API
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IPedidoRepository, PedidoRepository>();
             services.AddScoped<IProdutoRepository, ProdutoRepository>();
-            //Injeção de dependencia para tornar as classes independentes das classes que normalmente dependeria
-            //Desacopla as classes, o que as tornam independentes uma da outra
+
+            /*
+            Injeção de dependencia para tornar as classes independentes das classes que normalmente dependeria
+            Desacopla as classes, o que as tornam independentes uma da outra
+            O que facilita na organizacao e manutencao do codigo
+            */
 
             services.AddScoped<IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>>, ListarClienteUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarClienteRequest, IActionResult>, CadastrarClienteUseCase>();
@@ -52,10 +56,10 @@ namespace JuntosSomosMais.Ecommerce.API
             services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, IActionResult>, CadastrarProdutoUseCase>();
 
-            services.AddAutoMapper(typeof(MappingProfile));
+            services.AddAutoMapper(typeof(MappingProfile)); //permite o mapeamento das informacoes presentes nas diferentes classes
 
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
+                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")) //onde esta o caminho do banco de dados
                 .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
              );
 
@@ -67,7 +71,7 @@ namespace JuntosSomosMais.Ecommerce.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext context)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ApplicationContext context) //Configurando o ApplicationContext context, informa onde esta as informacoes sobre o banco de dados
         {
             if (env.IsDevelopment())
             {
@@ -77,6 +81,7 @@ namespace JuntosSomosMais.Ecommerce.API
             }
 
             context.Database.Migrate();
+            //Permite a criacao do banco de dados, as tabelas e insere os dados automaticamente quando a aplicacao for rodada
 
             app.UseHttpsRedirection();
 

@@ -11,8 +11,12 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     [Route("api/produtos")]
     public class ProdutosController : ControllerBase
     {
+        //O Controller aciona as informacoes do UseCase, onde consta as regras de negocio 
+        //O UseCase faz a conexao com o repositorio para acionar a acao que deseja executar no banco de dados
+
         public readonly IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
         public readonly IUseCaseAsync<CadastrarProdutoRequest, IActionResult> _useCaseCadastrarProduto;
+        //Injecao de Dependencia
 
         public ProdutosController(IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
                                  IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto)
@@ -27,7 +31,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
             var response = await _useCaseConsultarProdutoPorId.ExecuteAsync(filter);
 
             if (response == null)
-                return new NotFoundObjectResult("Digite um ID ou um Produto Válido!");
+                return new NotFoundObjectResult("Digite um ID ou um Produto Válido!"); //se o filtro recebido for nulo, retorne essa mensagem
 
             return new OkObjectResult(response);
         }

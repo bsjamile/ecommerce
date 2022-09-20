@@ -6,6 +6,9 @@ namespace JuntosSomosMais.Ecommerce.Core.Repositories
 {
     public interface IProdutoRepository : IRepository<Produto>
     {
+        //alem de ConsultarPorId, tambem vai ser atribuida a essa interface o que foi atribuida a interface IRepository,
+        //ou seja, vai herdar a Task Cadastrar para o objeto Produto
+
         Task<Produto> ConsultarPorId(GetFilterProduto filter);
     }
 }

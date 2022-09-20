@@ -10,8 +10,12 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     [Route("api/pedidos")]
     public class PedidosController : Controller
     {
+        //O Controller aciona as informacoes do UseCase, onde consta as regras de negocio 
+        //O UseCase faz a conexao com o repositorio para acionar a acao que deseja executar no banco de dados
+
         public readonly IUseCaseAsync<int, ConsultarPedidoPorIdResponse> _useCaseConsultarPedidoPorId;
         public readonly IUseCaseAsync<CadastrarPedidoRequest, IActionResult> _useCaseCadastrarPedido;
+        //Injecao de Dependencia
 
         public PedidosController(IUseCaseAsync<int, ConsultarPedidoPorIdResponse> useCaseConsultarPedidoPorId,
                                  IUseCaseAsync<CadastrarPedidoRequest, IActionResult> useCaseCadastrarPedido)
@@ -26,7 +30,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
             var response = await _useCaseConsultarPedidoPorId.ExecuteAsync(id);
 
             if (response == null)
-                return new NotFoundObjectResult("Digite um ID válido!");
+                return new NotFoundObjectResult("Digite um ID válido!"); //se o id recebido for nulo, retorne essa mensagem
 
             return new OkObjectResult(response);
         }

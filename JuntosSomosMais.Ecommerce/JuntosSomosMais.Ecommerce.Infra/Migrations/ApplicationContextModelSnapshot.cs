@@ -42,7 +42,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.Property<string>("Nome")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(50)");
+                        .HasColumnType("VARCHAR(70)");
 
                     b.Property<string>("Senha")
                         .IsRequired()
@@ -57,7 +57,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                     b.HasIndex("IdEndereco")
                         .IsUnique();
 
-                    b.ToTable("cliente");
+                    b.ToTable("clientes");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Endereco", b =>
@@ -69,7 +69,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.Property<string>("Bairro")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(30)");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Cep")
                         .IsRequired()
@@ -77,14 +77,14 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.Property<string>("Cidade")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(30)");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Complemento")
                         .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Estado")
                         .IsRequired()
-                        .HasColumnType("CHAR(2)");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("Numero")
                         .IsRequired()
@@ -92,18 +92,18 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.Property<string>("Pais")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(20)");
+                        .HasColumnType("VARCHAR(50)");
 
                     b.Property<string>("PontoDeReferencia")
                         .HasColumnType("VARCHAR(100)");
 
                     b.Property<string>("Rua")
                         .IsRequired()
-                        .HasColumnType("VARCHAR(50)");
+                        .HasColumnType("VARCHAR(70)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("endereco");
+                    b.ToTable("enderecos");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Pedido", b =>
@@ -123,7 +123,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.HasIndex("IdCliente");
 
-                    b.ToTable("pedido");
+                    b.ToTable("pedidos");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.PedidoProduto", b =>
@@ -148,7 +148,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.HasIndex("IdProduto");
 
-                    b.ToTable("pedido_produto");
+                    b.ToTable("pedidos_produtos");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Produto", b =>
@@ -167,7 +167,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("produto");
+                    b.ToTable("produtos");
                 });
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Cliente", b =>

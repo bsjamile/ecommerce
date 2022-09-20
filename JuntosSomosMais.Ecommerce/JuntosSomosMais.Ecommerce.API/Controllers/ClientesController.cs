@@ -11,8 +11,12 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     [Route("api/clientes")]
     public class ClientesController : ControllerBase
     {
+        //O Controller aciona as informacoes do UseCase, onde consta as regras de negocio 
+        //O UseCase faz a conexao com o repositorio para acionar a acao que deseja executar no banco de dados
+
         public readonly IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>> _useCaseListarCliente;
         public readonly IUseCaseAsync<CadastrarClienteRequest, IActionResult> _useCaseCadastrarCliente;
+        //Injecao de Dependencia
 
         public ClientesController(IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>> useCaseListarCliente,
                                   IUseCaseAsync<CadastrarClienteRequest, IActionResult> useCaseCadastrarCliente)
@@ -24,7 +28,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         [HttpGet]
         public async Task<List<ListarClienteResponse>> GetListarCliente([FromQuery] ListarClienteRequest listarClienteRequest)
         {
-            return await _useCaseListarCliente.ExecuteAsync(listarClienteRequest);
+            return await _useCaseListarCliente.ExecuteAsync(listarClienteRequest);            
         }
 
         [HttpPost]

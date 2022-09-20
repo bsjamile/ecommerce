@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JuntosSomosMais.Ecommerce.Core.Entities
 {
-    public class Cliente
+    public class Cliente //a entidade representa cada tabela e colunas dessa tabela no banco de dados
     {
         public int Id { get; private set; }
         public string Nome { get; private set; }

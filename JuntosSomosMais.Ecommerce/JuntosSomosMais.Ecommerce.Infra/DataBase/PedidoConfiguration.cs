@@ -6,9 +6,9 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
 {
     public class PedidoConfiguration : IEntityTypeConfiguration<Pedido>
     {
-        public void Configure(EntityTypeBuilder<Pedido> builder)
+        public void Configure(EntityTypeBuilder<Pedido> builder) //configuracao das tabelas e suas colunas do banco de dados
         {
-            builder.ToTable("pedido");
+            builder.ToTable("pedidos");
             builder.HasKey(pk => pk.Id);
             builder.Property(p => p.DataPedido)
                 .HasColumnType("DATETIME")

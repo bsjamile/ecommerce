@@ -6,9 +6,9 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
 {
     public class PedidoProdutoConfiguration : IEntityTypeConfiguration<PedidoProduto>
     {
-        public void Configure(EntityTypeBuilder<PedidoProduto> builder)
+        public void Configure(EntityTypeBuilder<PedidoProduto> builder)  //configuracao das tabelas e suas colunas do banco de dados
         {
-            builder.ToTable("pedido_produto");
+            builder.ToTable("pedidos_produtos");
             builder.HasKey(pk => pk.Id);
             builder.Property(p => p.Quantidade)
                 .HasColumnType("INT")

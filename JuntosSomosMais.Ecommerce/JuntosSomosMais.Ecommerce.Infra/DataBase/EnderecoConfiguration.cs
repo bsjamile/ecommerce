@@ -6,15 +6,15 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
 {
     public class EnderecoConfiguration : IEntityTypeConfiguration<Endereco>
     {
-        public void Configure(EntityTypeBuilder<Endereco> builder)
+        public void Configure(EntityTypeBuilder<Endereco> builder) //configuracao das tabelas e suas colunas do banco de dados
         {
-            builder.ToTable("endereco");
+            builder.ToTable("enderecos");
             builder.HasKey(pk => pk.Id);
             builder.Property(p => p.Rua)
-                .HasColumnType("VARCHAR(50)")
+                .HasColumnType("VARCHAR(70)")
                 .IsRequired();
             builder.Property(p => p.Bairro)
-                .HasColumnType("VARCHAR(30)")
+                .HasColumnType("VARCHAR(50)")
                 .IsRequired();
             builder.Property(p => p.Numero)
                 .HasColumnType("VARCHAR(10)")
@@ -30,7 +30,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
                 .HasColumnType("VARCHAR(50)")
                 .IsRequired();
             builder.Property(p => p.Estado)
-                .HasColumnType("VARCHAR(30)")
+                .HasColumnType("VARCHAR(50)")
                 .IsRequired();
             builder.Property(p => p.Pais)
                 .HasColumnType("VARCHAR(50)")

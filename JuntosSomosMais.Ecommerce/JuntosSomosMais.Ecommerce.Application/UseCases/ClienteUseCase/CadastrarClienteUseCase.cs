@@ -9,14 +9,14 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ClienteUseCase
 {
     public class CadastrarClienteUseCase : IUseCaseAsync<CadastrarClienteRequest, IActionResult>
     {
-        public readonly IClienteRepository _clienteRepository;
-        public readonly IMapper _mapper;
+        public readonly IClienteRepository _clienteRepository; //representacao do repositorio para chamar a task que deseja executar
+        public readonly IMapper _mapper; //mapper para permitir o mapeamento das informacoes
 
         public CadastrarClienteUseCase(IClienteRepository clienteRepository,
                                        IMapper mapper)
         {
-            _clienteRepository = clienteRepository;
-            _mapper = mapper;
+            _clienteRepository = clienteRepository; 
+            _mapper = mapper; 
         }
         public async Task<IActionResult> ExecuteAsync(CadastrarClienteRequest request)
         {

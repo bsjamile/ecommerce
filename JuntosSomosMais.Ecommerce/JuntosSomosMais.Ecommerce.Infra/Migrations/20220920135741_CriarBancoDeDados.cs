@@ -3,33 +3,35 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 {
-    public partial class AddDB : Migration
+    public partial class CriarBancoDeDados : Migration 
     {
+        //configuracoes geradas atraves do migrations a partir do que foi definido no ApplicationContext
+        //para criar as tabelas automaticamente no banco de dados
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "endereco",
+                name: "enderecos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Rua = table.Column<string>(type: "VARCHAR(50)", nullable: false),
-                    Bairro = table.Column<string>(type: "VARCHAR(30)", nullable: false),
+                    Rua = table.Column<string>(type: "VARCHAR(70)", nullable: false),
+                    Bairro = table.Column<string>(type: "VARCHAR(50)", nullable: false),
                     Numero = table.Column<string>(type: "VARCHAR(10)", nullable: false),
                     Cep = table.Column<string>(type: "VARCHAR(15)", nullable: false),
                     Complemento = table.Column<string>(type: "VARCHAR(50)", nullable: true),
                     PontoDeReferencia = table.Column<string>(type: "VARCHAR(100)", nullable: true),
-                    Cidade = table.Column<string>(type: "VARCHAR(30)", nullable: false),
-                    Estado = table.Column<string>(type: "CHAR(2)", nullable: false),
-                    Pais = table.Column<string>(type: "VARCHAR(20)", nullable: false)
+                    Cidade = table.Column<string>(type: "VARCHAR(50)", nullable: false),
+                    Estado = table.Column<string>(type: "VARCHAR(50)", nullable: false),
+                    Pais = table.Column<string>(type: "VARCHAR(50)", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_endereco", x => x.Id);
+                    table.PrimaryKey("PK_enderecos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "produto",
+                name: "produtos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -39,16 +41,16 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_produto", x => x.Id);
+                    table.PrimaryKey("PK_produtos", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
-                name: "cliente",
+                name: "clientes",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Nome = table.Column<string>(type: "VARCHAR(50)", nullable: false),
+                    Nome = table.Column<string>(type: "VARCHAR(70)", nullable: false),
                     DataNasc = table.Column<DateTime>(type: "DATETIME", nullable: false),
                     CPF = table.Column<string>(type: "VARCHAR(20)", nullable: false),
                     Telefone = table.Column<string>(type: "VARCHAR(20)", nullable: false),
@@ -58,17 +60,17 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_cliente", x => x.Id);
+                    table.PrimaryKey("PK_clientes", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_cliente_endereco_IdEndereco",
+                        name: "FK_clientes_enderecos_IdEndereco",
                         column: x => x.IdEndereco,
-                        principalTable: "endereco",
+                        principalTable: "enderecos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "pedido",
+                name: "pedidos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -78,17 +80,17 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pedido", x => x.Id);
+                    table.PrimaryKey("PK_pedidos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_pedido_cliente_IdCliente",
+                        name: "FK_pedidos_clientes_IdCliente",
                         column: x => x.IdCliente,
-                        principalTable: "cliente",
+                        principalTable: "clientes",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
-                name: "pedido_produto",
+                name: "pedidos_produtos",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -99,59 +101,59 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_pedido_produto", x => x.Id);
+                    table.PrimaryKey("PK_pedidos_produtos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_pedido_produto_pedido_IdPedido",
+                        name: "FK_pedidos_produtos_pedidos_IdPedido",
                         column: x => x.IdPedido,
-                        principalTable: "pedido",
+                        principalTable: "pedidos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_pedido_produto_produto_IdProduto",
+                        name: "FK_pedidos_produtos_produtos_IdProduto",
                         column: x => x.IdProduto,
-                        principalTable: "produto",
+                        principalTable: "produtos",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_cliente_IdEndereco",
-                table: "cliente",
+                name: "IX_clientes_IdEndereco",
+                table: "clientes",
                 column: "IdEndereco",
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_pedido_IdCliente",
-                table: "pedido",
+                name: "IX_pedidos_IdCliente",
+                table: "pedidos",
                 column: "IdCliente");
 
             migrationBuilder.CreateIndex(
-                name: "IX_pedido_produto_IdPedido",
-                table: "pedido_produto",
+                name: "IX_pedidos_produtos_IdPedido",
+                table: "pedidos_produtos",
                 column: "IdPedido");
 
             migrationBuilder.CreateIndex(
-                name: "IX_pedido_produto_IdProduto",
-                table: "pedido_produto",
+                name: "IX_pedidos_produtos_IdProduto",
+                table: "pedidos_produtos",
                 column: "IdProduto");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "pedido_produto");
+                name: "pedidos_produtos");
 
             migrationBuilder.DropTable(
-                name: "pedido");
+                name: "pedidos");
 
             migrationBuilder.DropTable(
-                name: "produto");
+                name: "produtos");
 
             migrationBuilder.DropTable(
-                name: "cliente");
+                name: "clientes");
 
             migrationBuilder.DropTable(
-                name: "endereco");
+                name: "enderecos");
         }
     }
 }

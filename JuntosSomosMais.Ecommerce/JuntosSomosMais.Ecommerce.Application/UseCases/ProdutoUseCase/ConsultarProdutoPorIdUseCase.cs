@@ -13,8 +13,8 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
         public ConsultarProdutoPorIdUseCase(IProdutoRepository produtoRepository,
             IMapper mapper)
         {
-            _produtoRepository = produtoRepository;
-            _mapper = mapper;
+            _produtoRepository = produtoRepository; //representacao do repositorio para chamar a task que deseja executar
+            _mapper = mapper; //mapper para permitir o mapeamento das informacoes
         }
 
         public Task<ConsultarProdutoPorIdResponse> ExecuteAsync(GetFilterProduto filter)
