@@ -1,7 +1,4 @@
-﻿using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
-using JuntosSomosMais.Ecommerce.Core.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente
 {

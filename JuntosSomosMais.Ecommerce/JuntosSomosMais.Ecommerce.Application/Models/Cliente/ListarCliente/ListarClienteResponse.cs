@@ -1,18 +1,17 @@
-﻿using JuntosSomosMais.Ecommerce.Core.Entities;
-using System;
-using System.Collections.Generic;
+﻿using System;
 
 namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente
 {
     public class ListarClienteResponse
     {
-        public int IdCliente { get; set; }
-        public string Nome { get; set; }
-        public DateTime DataNasc { get; set; }
-        public string Telefone { get; set; }
-        public string CPF { get; set; }
-        public string Email { get; set; }
-        public string Senha { get; set; }
-        public ListarClienteEnderecoResponse Endereco { get; set; }
+        public int IdCliente { get; private set; }
+        public string Nome { get; private set; }
+        public DateTime DataNasc { get; private set; }
+        public string Telefone { get; private set; }
+        public string CPF { get; private set; }
+        public string Email { get; private set; }
+        public string Senha { get; private set; }
+        public ListarClienteEnderecoResponse Endereco { get; private set; }
+        //Propriedade de Navegacao
     }
 }

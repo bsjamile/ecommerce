@@ -1,7 +1,6 @@
 ﻿using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
 using JuntosSomosMais.Ecommerce.Application.UseCases;
-using JuntosSomosMais.Ecommerce.Core.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -12,10 +11,10 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     public class PedidosController : Controller
     {
         public readonly IUseCaseAsync<int, ConsultarPedidoPorIdResponse> _useCaseConsultarPedidoPorId;
-        public readonly IUseCaseAsync<CadastrarPedidoRequest, CadastrarPedidoResponse> _useCaseCadastrarPedido;
+        public readonly IUseCaseAsync<CadastrarPedidoRequest, IActionResult> _useCaseCadastrarPedido;
 
         public PedidosController(IUseCaseAsync<int, ConsultarPedidoPorIdResponse> useCaseConsultarPedidoPorId,
-                                 IUseCaseAsync<CadastrarPedidoRequest, CadastrarPedidoResponse> useCaseCadastrarPedido)
+                                 IUseCaseAsync<CadastrarPedidoRequest, IActionResult> useCaseCadastrarPedido)
         {
             _useCaseConsultarPedidoPorId = useCaseConsultarPedidoPorId;
             _useCaseCadastrarPedido = useCaseCadastrarPedido;
@@ -25,6 +24,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         public async Task<ActionResult<ConsultarPedidoPorIdResponse>> GetPedidoPorId([FromQuery] int id)
         {
             var response = await _useCaseConsultarPedidoPorId.ExecuteAsync(id);
+
             if (response == null)
                 return new NotFoundObjectResult("Digite um ID válido!");
 
@@ -32,7 +32,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CadastrarPedidoResponse>> Post([FromBody] CadastrarPedidoRequest cadastrarPedidoRequest)
+        public async Task<IActionResult> PostCadastrarPedido([FromBody] CadastrarPedidoRequest cadastrarPedidoRequest)
         {
             return await _useCaseCadastrarPedido.ExecuteAsync(cadastrarPedidoRequest);
         }

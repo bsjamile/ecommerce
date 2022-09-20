@@ -1,5 +1,4 @@
 ﻿using JuntosSomosMais.Ecommerce.Core.Entities;
-using JuntosSomosMais.Ecommerce.Core.Filters;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
 using JuntosSomosMais.Ecommerce.Infra.DataBase;
 using Microsoft.EntityFrameworkCore;
@@ -21,8 +20,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             await _context.SaveChangesAsync();
         }
 
-
-
         public async Task<Pedido> ConsultarPorId(int id)
         {
             var result = _context
@@ -40,9 +37,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
                  .FirstOrDefaultAsync(); //Vai no banco e busca = materializacao de busca
             }
             else
-            {
-                return await Task.FromResult(_context.Find<Pedido>(id));
-            }             
+                return await Task.FromResult(_context.Find<Pedido>(id));           
         }
     }
 }

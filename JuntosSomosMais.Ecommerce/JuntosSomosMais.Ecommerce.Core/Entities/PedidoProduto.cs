@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-
-namespace JuntosSomosMais.Ecommerce.Core.Entities
+﻿namespace JuntosSomosMais.Ecommerce.Core.Entities
 {
     public class PedidoProduto
     {

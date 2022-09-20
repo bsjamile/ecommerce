@@ -12,23 +12,23 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     public class ClientesController : ControllerBase
     {
         public readonly IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>> _useCaseListarCliente;
-        public readonly IUseCaseAsync<CadastrarClienteRequest, CadastrarClienteResponse> _useCaseCadastrarCliente;
+        public readonly IUseCaseAsync<CadastrarClienteRequest, IActionResult> _useCaseCadastrarCliente;
 
-        public ClientesController(IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>> useCaseListarCliente, 
-                                  IUseCaseAsync<CadastrarClienteRequest, CadastrarClienteResponse> useCaseCadastrarCliente)
+        public ClientesController(IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>> useCaseListarCliente,
+                                  IUseCaseAsync<CadastrarClienteRequest, IActionResult> useCaseCadastrarCliente)
         {
             _useCaseListarCliente = useCaseListarCliente;
             _useCaseCadastrarCliente = useCaseCadastrarCliente;
         }
 
         [HttpGet]
-        public async Task<List<ListarClienteResponse>> GetTodosClientes([FromQuery] ListarClienteRequest listarClienteRequest)
+        public async Task<List<ListarClienteResponse>> GetListarCliente([FromQuery] ListarClienteRequest listarClienteRequest)
         {
             return await _useCaseListarCliente.ExecuteAsync(listarClienteRequest);
         }
 
         [HttpPost]
-        public async Task<ActionResult<CadastrarClienteResponse>> Post([FromBody] CadastrarClienteRequest cadastrarClienteRequest)
+        public async Task<IActionResult> PostCadastrarCliente([FromBody] CadastrarClienteRequest cadastrarClienteRequest)
         {
             return await _useCaseCadastrarCliente.ExecuteAsync(cadastrarClienteRequest);
         }

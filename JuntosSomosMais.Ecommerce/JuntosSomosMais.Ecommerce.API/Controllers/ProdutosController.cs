@@ -12,10 +12,10 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
     public class ProdutosController : ControllerBase
     {
         public readonly IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
-        public readonly IUseCaseAsync<CadastrarProdutoRequest, CadastrarProdutoResponse> _useCaseCadastrarProduto;
+        public readonly IUseCaseAsync<CadastrarProdutoRequest, IActionResult> _useCaseCadastrarProduto;
 
         public ProdutosController(IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
-                                 IUseCaseAsync<CadastrarProdutoRequest, CadastrarProdutoResponse> useCaseCadastrarProduto)
+                                 IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto)
         {
             _useCaseConsultarProdutoPorId = useCaseConsultarProdutoPorId;
             _useCaseCadastrarProduto = useCaseCadastrarProduto;
@@ -25,6 +25,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         public async Task<ActionResult<ConsultarProdutoPorIdResponse>> GetProdutoPorId([FromQuery] GetFilterProduto filter)
         {
             var response = await _useCaseConsultarProdutoPorId.ExecuteAsync(filter);
+
             if (response == null)
                 return new NotFoundObjectResult("Digite um ID ou um Produto Válido!");
 
@@ -32,7 +33,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<CadastrarProdutoResponse>> Post([FromBody] CadastrarProdutoRequest cadastrarProdutoRequest)
+        public async Task<IActionResult> PostCadastrarProduto([FromBody] CadastrarProdutoRequest cadastrarProdutoRequest)
         {
             return await _useCaseCadastrarProduto.ExecuteAsync(cadastrarProdutoRequest);
         }

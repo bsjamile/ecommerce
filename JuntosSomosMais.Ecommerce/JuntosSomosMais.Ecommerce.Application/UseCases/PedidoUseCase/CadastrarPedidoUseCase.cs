@@ -5,10 +5,11 @@ using AutoMapper;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
 using JuntosSomosMais.Ecommerce.Core.Entities;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
+using Microsoft.AspNetCore.Mvc;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 {
-    public class CadastrarPedidoUseCase : IUseCaseAsync<CadastrarPedidoRequest, CadastrarPedidoResponse>
+    public class CadastrarPedidoUseCase : IUseCaseAsync<CadastrarPedidoRequest, IActionResult>
     {        
         public readonly IPedidoRepository _pedidoRepository;
         public readonly IMapper _mapper;
@@ -19,10 +20,10 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
             _pedidoRepository = pedidoRepository;
             _mapper = mapper;
         }
-        public async Task<CadastrarPedidoResponse> ExecuteAsync(CadastrarPedidoRequest request)
+        public async Task<IActionResult> ExecuteAsync(CadastrarPedidoRequest request)
         {
             if (request == null)
-                return null;
+                return new BadRequestResult();
 
             var pedidoProdutos = new List<PedidoProduto>();
 
@@ -33,7 +34,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 
             await _pedidoRepository.Cadastrar(pedido);
 
-            return new CadastrarPedidoResponse();
+            return new OkResult();
         }
     }
 }

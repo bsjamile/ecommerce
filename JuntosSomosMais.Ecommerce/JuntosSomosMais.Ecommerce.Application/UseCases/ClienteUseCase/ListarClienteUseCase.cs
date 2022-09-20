@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.ClienteUseCase
 {

@@ -1,10 +1,8 @@
-﻿using System;
+﻿using AutoMapper;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
-using System.Threading.Tasks;
-using JuntosSomosMais.Ecommerce.Core.Repositories;
-using AutoMapper;
 using JuntosSomosMais.Ecommerce.Core.Filters;
-using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
+using JuntosSomosMais.Ecommerce.Core.Repositories;
+using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
 {
@@ -21,13 +19,13 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
 
         public Task<ConsultarProdutoPorIdResponse> ExecuteAsync(GetFilterProduto filter)
         {
-            var resposta = _produtoRepository.ConsultarPorId(filter).Result;
+            var produto = _produtoRepository.ConsultarPorId(filter).Result;
 
             var response = (ConsultarProdutoPorIdResponse)null;
 
-            if (resposta != null)
+            if (produto != null)
             {
-                response = _mapper.Map<ConsultarProdutoPorIdResponse>(resposta);
+                response = _mapper.Map<ConsultarProdutoPorIdResponse>(produto);
             }
 
             return Task.FromResult(response);

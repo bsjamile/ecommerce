@@ -1,9 +1,7 @@
-﻿using System;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
-using JuntosSomosMais.Ecommerce.Core.Filters;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
+using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 {
@@ -20,13 +18,13 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 
         public Task<ConsultarPedidoPorIdResponse> ExecuteAsync(int id)
         {
-            var resposta = _pedidoRepository.ConsultarPorId(id).Result;
+            var pedido = _pedidoRepository.ConsultarPorId(id).Result;
 
             var response = (ConsultarPedidoPorIdResponse)null;
 
-            if (resposta != null)
+            if (pedido != null)
             {
-                response = _mapper.Map<ConsultarPedidoPorIdResponse>(resposta);
+                response = _mapper.Map<ConsultarPedidoPorIdResponse>(pedido);
             }
 
             return Task.FromResult(response);

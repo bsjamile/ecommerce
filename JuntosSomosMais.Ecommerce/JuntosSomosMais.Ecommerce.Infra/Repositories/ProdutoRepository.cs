@@ -3,9 +3,7 @@ using JuntosSomosMais.Ecommerce.Core.Filters;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
 using JuntosSomosMais.Ecommerce.Infra.DataBase;
 using Microsoft.EntityFrameworkCore;
-using System;
 using System.Linq;
-using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Infra.Repositories
@@ -25,8 +23,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
 
         public async Task<Produto> ConsultarPorId(GetFilterProduto filter)
         {
-            // return await Task.FromResult(_context.Find<Produto>(id));
-
             var result = _context
                 .Produtos
                 .AsQueryable();
@@ -48,7 +44,6 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             return await result
                 .AsNoTracking()
                 .FirstOrDefaultAsync();
-            //Vai no banco e busca = materializacao de busca
         }
     }
 }

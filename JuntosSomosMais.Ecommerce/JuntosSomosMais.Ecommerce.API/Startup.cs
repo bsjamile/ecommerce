@@ -15,6 +15,7 @@ using JuntosSomosMais.Ecommerce.Infra.DataBase;
 using JuntosSomosMais.Ecommerce.Infra.Repositories;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -43,13 +44,13 @@ namespace JuntosSomosMais.Ecommerce.API
             //Desacopla as classes, o que as tornam independentes uma da outra
 
             services.AddScoped<IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>>, ListarClienteUseCase>();
-            services.AddScoped<IUseCaseAsync<CadastrarClienteRequest, CadastrarClienteResponse>, CadastrarClienteUseCase>();
+            services.AddScoped<IUseCaseAsync<CadastrarClienteRequest, IActionResult>, CadastrarClienteUseCase>();
 
             services.AddScoped<IUseCaseAsync<int, ConsultarPedidoPorIdResponse>, ConsultarPedidoPorIdUseCase>();
-            services.AddScoped<IUseCaseAsync<CadastrarPedidoRequest, CadastrarPedidoResponse>, CadastrarPedidoUseCase>();
+            services.AddScoped<IUseCaseAsync<CadastrarPedidoRequest, IActionResult>, CadastrarPedidoUseCase>();
 
             services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
-            services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, CadastrarProdutoResponse>, CadastrarProdutoUseCase>();
+            services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, IActionResult>, CadastrarProdutoUseCase>();
 
             services.AddAutoMapper(typeof(MappingProfile));
 

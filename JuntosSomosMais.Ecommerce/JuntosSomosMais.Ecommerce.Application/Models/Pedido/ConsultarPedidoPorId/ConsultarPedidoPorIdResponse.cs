@@ -5,8 +5,8 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPor
 {
     public class ConsultarPedidoPorIdResponse
     {
-        public DateTime DataPedido { get; set; }                
-        public ConsultarPedidoPorIdClienteResponse Cliente { get; set; }
-        public List<ConsultarPedidoPorIdProdutoResponse> Produtos { get; set; }
+        public DateTime DataPedido { get; private set; }
+        public ConsultarPedidoPorIdClienteResponse Cliente { get; private set; }
+        public List<ConsultarPedidoPorIdProdutoResponse> Produtos { get; private set; }
     }
 }

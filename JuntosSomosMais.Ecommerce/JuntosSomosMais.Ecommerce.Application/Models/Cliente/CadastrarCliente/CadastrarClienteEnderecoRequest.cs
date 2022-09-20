@@ -1,6 +1,4 @@
-﻿using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
-
-namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente
+﻿namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente
 {
     public class CadastrarClienteEnderecoRequest
     {

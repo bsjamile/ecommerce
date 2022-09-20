@@ -2,7 +2,8 @@
 {
     public class ConsultarProdutoPorIdResponse
     {
-        public string Nome { get; set; }
-        public double Preco { get; set; }
+        public int IdProduto { get; private set; }
+        public string Nome { get; private set; }
+        public double Preco { get; private set; }
     }
 }
