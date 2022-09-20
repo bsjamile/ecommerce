@@ -3,6 +3,7 @@ using JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente;
 using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
+using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
 using JuntosSomosMais.Ecommerce.Application.UseCases;
@@ -55,6 +56,7 @@ namespace JuntosSomosMais.Ecommerce.API
 
             services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, IActionResult>, CadastrarProdutoUseCase>();
+            services.AddScoped<IUseCaseAsync<AtualizarProdutoRequest, IActionResult >, AtualizarProdutoUseCase>();
             services.AddScoped<IUseCaseAsync<int, IActionResult>, DeletarProdutoUseCase>();
 
             services.AddAutoMapper(typeof(MappingProfile)); //permite o mapeamento das informacoes presentes nas diferentes classes

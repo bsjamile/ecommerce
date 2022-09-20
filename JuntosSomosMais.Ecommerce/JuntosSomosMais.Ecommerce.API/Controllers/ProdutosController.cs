@@ -1,4 +1,5 @@
-﻿using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
+﻿using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
+using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
 using JuntosSomosMais.Ecommerce.Application.UseCases;
 using JuntosSomosMais.Ecommerce.Core.Filters;
@@ -16,15 +17,18 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
 
         public readonly IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
         public readonly IUseCaseAsync<CadastrarProdutoRequest, IActionResult> _useCaseCadastrarProduto;
+        public readonly IUseCaseAsync<AtualizarProdutoRequest, IActionResult> _useCaseAtualizarProduto;
         public readonly IUseCaseAsync<int, IActionResult> _useCaseDeletarProduto;
         //Injecao de Dependencia
 
         public ProdutosController(IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
-                                 IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto,
+                                 IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto,                                 
+                                 IUseCaseAsync<AtualizarProdutoRequest, IActionResult> useCaseAtualizarProduto,
                                  IUseCaseAsync<int, IActionResult> useCaseDeletarProduto)
         {
             _useCaseConsultarProdutoPorId = useCaseConsultarProdutoPorId;
             _useCaseCadastrarProduto = useCaseCadastrarProduto;
+            _useCaseAtualizarProduto = useCaseAtualizarProduto;
             _useCaseDeletarProduto = useCaseDeletarProduto;
         }
 
@@ -43,6 +47,12 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         public async Task<IActionResult> PostCadastrarProduto([FromBody] CadastrarProdutoRequest cadastrarProdutoRequest)
         {
             return await _useCaseCadastrarProduto.ExecuteAsync(cadastrarProdutoRequest);
+        }
+        [HttpPut]
+        public async Task<IActionResult> Put([FromBody] AtualizarProdutoRequest produto)
+        {
+            await _useCaseAtualizarProduto.ExecuteAsync(produto);
+            return NoContent();
         }
 
         [HttpDelete("{id}")]

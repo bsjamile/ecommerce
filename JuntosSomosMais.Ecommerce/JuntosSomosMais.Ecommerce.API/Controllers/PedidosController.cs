@@ -24,7 +24,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
             _useCaseCadastrarPedido = useCaseCadastrarPedido;
         }
 
-        [HttpGet("{id}")]
+        [HttpGet]
         public async Task<ActionResult<ConsultarPedidoPorIdResponse>> GetPedidoPorId([FromQuery] int id)
         {
             var response = await _useCaseConsultarPedidoPorId.ExecuteAsync(id);

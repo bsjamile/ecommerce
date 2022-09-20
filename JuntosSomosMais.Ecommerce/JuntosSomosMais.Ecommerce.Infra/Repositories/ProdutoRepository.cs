@@ -49,9 +49,9 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
                 .FirstOrDefaultAsync(); //busca o primeiro resultado correspondente àquele id
         }
 
-        public async Task Atualizar(Task pedido)
+        public async Task Atualizar(Produto produto)
         {
-            _context.Entry(pedido).State = EntityState.Modified; //busque o produto a ser atualizado e atualize
+            _context.Entry(produto).State = EntityState.Modified; //busque o produto a ser atualizado e atualize
             await _context.SaveChangesAsync(); //salve as alteracoes
         }
 

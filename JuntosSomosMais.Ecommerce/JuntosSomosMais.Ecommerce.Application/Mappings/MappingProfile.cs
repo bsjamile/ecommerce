@@ -3,6 +3,7 @@ using JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente;
 using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
 using JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId;
+using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
 using JuntosSomosMais.Ecommerce.Core.Entities;
@@ -52,6 +53,9 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
                 .ForMember(dest => dest.Nome, fonte => fonte.MapFrom(src => src.Produto));
 
             CreateMap<CadastrarProdutoRequest, Produto>();
+
+            CreateMap<AtualizarProdutoRequest, Produto>()
+                .ForMember(dest => dest.Id, fonte => fonte.MapFrom(src => src.IdProduto));
         }
     }
 }
