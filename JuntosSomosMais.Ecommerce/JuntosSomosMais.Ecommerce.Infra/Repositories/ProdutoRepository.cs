@@ -15,6 +15,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
         {
             _context = context;
         }
+        
         public async Task Cadastrar(Produto produto)
         {
             _context.Produtos.Add(produto); //adicionar as informacoes do produto
@@ -46,6 +47,20 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             return await result
                 .AsNoTracking() //retorna uma consulta e as informacoes nao serao armazenadas 
                 .FirstOrDefaultAsync(); //busca o primeiro resultado correspondente àquele id
+        }
+
+        public async Task Atualizar(Task pedido)
+        {
+            _context.Entry(pedido).State = EntityState.Modified; //busque o produto a ser atualizado e atualize
+            await _context.SaveChangesAsync(); //salve as alteracoes
+        }
+
+
+        public async Task Excluir(int id)
+        {
+            var produto = await _context.Produtos.FindAsync(id); //encontre o prroduto correspondente a esse id
+            _context.Produtos.Remove(produto); //remova
+            await _context.SaveChangesAsync(); //salve as alteracoes
         }
     }
 }

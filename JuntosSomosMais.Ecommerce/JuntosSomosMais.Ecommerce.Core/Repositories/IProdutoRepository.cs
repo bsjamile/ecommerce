@@ -10,5 +10,7 @@ namespace JuntosSomosMais.Ecommerce.Core.Repositories
         //ou seja, vai herdar a Task Cadastrar para o objeto Produto
 
         Task<Produto> ConsultarPorId(GetFilterProduto filter);
+        Task Atualizar(Task obj);
+        Task Excluir(int id);
     }
 }

@@ -47,7 +47,7 @@ namespace JuntosSomosMais.Ecommerce.API
             O que facilita na organizacao e manutencao do codigo
             */
 
-            services.AddScoped<IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>>, ListarClienteUseCase>();
+            services.AddScoped<IUseCaseOneAsync<List<ListarClienteResponse>>, ListarClienteUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarClienteRequest, IActionResult>, CadastrarClienteUseCase>();
 
             services.AddScoped<IUseCaseAsync<int, ConsultarPedidoPorIdResponse>, ConsultarPedidoPorIdUseCase>();
@@ -55,6 +55,7 @@ namespace JuntosSomosMais.Ecommerce.API
 
             services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, IActionResult>, CadastrarProdutoUseCase>();
+            services.AddScoped<IUseCaseAsync<int, IActionResult>, DeletarProdutoUseCase>();
 
             services.AddAutoMapper(typeof(MappingProfile)); //permite o mapeamento das informacoes presentes nas diferentes classes
 

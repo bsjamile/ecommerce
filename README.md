@@ -17,4 +17,4 @@
 - GET/api/produtos
 - POST/api/produtos
 - PUT/api/produtos
-- DELETE/api/produtos
+- DELETE/api/produtos/{id}

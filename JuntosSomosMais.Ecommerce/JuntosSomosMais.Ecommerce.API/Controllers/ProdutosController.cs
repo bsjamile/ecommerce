@@ -16,13 +16,16 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
 
         public readonly IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
         public readonly IUseCaseAsync<CadastrarProdutoRequest, IActionResult> _useCaseCadastrarProduto;
+        public readonly IUseCaseAsync<int, IActionResult> _useCaseDeletarProduto;
         //Injecao de Dependencia
 
         public ProdutosController(IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
-                                 IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto)
+                                 IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto,
+                                 IUseCaseAsync<int, IActionResult> useCaseDeletarProduto)
         {
             _useCaseConsultarProdutoPorId = useCaseConsultarProdutoPorId;
             _useCaseCadastrarProduto = useCaseCadastrarProduto;
+            _useCaseDeletarProduto = useCaseDeletarProduto;
         }
 
         [HttpGet]
@@ -40,6 +43,17 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         public async Task<IActionResult> PostCadastrarProduto([FromBody] CadastrarProdutoRequest cadastrarProdutoRequest)
         {
             return await _useCaseCadastrarProduto.ExecuteAsync(cadastrarProdutoRequest);
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult> Delete(int id)
+        {
+            var deletarProduto = await _useCaseDeletarProduto.ExecuteAsync(id);
+
+            if (deletarProduto == null)
+                return new NotFoundObjectResult("Não encontrado");
+
+            return NoContent();
         }
     }
 }

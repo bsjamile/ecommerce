@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.ClienteUseCase
 {
-    public class ListarClienteUseCase : IUseCaseAsync<ListarClienteRequest, List<ListarClienteResponse>>
+    public class ListarClienteUseCase : IUseCaseOneAsync<List<ListarClienteResponse>>
     {
         public readonly IClienteRepository _clienteRepository; //representacao do repositorio para chamar a task que deseja executar
         public readonly IMapper _mapper; //mapper para permitir o mapeamento das informacoes
@@ -16,7 +16,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ClienteUseCase
             _clienteRepository = clienteRepository;
             _mapper = mapper;
         }
-        public async Task<List<ListarClienteResponse>> ExecuteAsync(ListarClienteRequest request)
+        public async Task<List<ListarClienteResponse>> ExecuteAsync()
         {
             var clientes = await _clienteRepository.Listar();
             var clientesResponse = _mapper.Map<List<ListarClienteResponse>>(clientes);
