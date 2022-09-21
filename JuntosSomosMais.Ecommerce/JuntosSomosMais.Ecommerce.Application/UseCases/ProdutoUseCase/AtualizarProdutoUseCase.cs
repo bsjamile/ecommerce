@@ -32,7 +32,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
 
             await _repository.Atualizar(produto);
 
-            return new OkResult();
+            return new OkObjectResult("Produto atualizado!");
         }
     }
 }

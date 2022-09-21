@@ -16,29 +16,28 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
         }
         public async Task Cadastrar(Pedido pedido)
         {
-            _context.Pedidos.Add(pedido); //adicionar as informacoes do pedido
-            await _context.SaveChangesAsync(); //salvar essas informacoes no banco de dados
+            _context.Pedidos.Add(pedido);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Pedido> ConsultarPorId(int id)
         {
             var result = _context
-                 .Pedidos //acessar as informacoes do banco de dados da tabela Pedidos que foi definido no ApplicationContext
+                 .Pedidos
                  .Include(i => i.PedidoProdutos)
-                     .ThenInclude(i => i.Produto) //incluir as informacoes dos produtos correspondentes ao pedido
-                 .Include(i => i.Cliente) //incluir as informacoes do cliente correspondentes ao pedido
-                 .AsQueryable(); //sequenciar as informacoes
+                     .ThenInclude(i => i.Produto)
+                 .Include(i => i.Cliente)
+                 .AsQueryable();
 
-            if (id != 0) //se o id nao for 0, procurar as informacoes sobre o pedido correspondente a esse id no banco de dados 
+            if (id != 0)
             {
                 result = result.Where(w => w.Id == id);
                 return await result
-                 .AsNoTracking() //retorna uma consulta e as informacoes nao serao armazenadas 
-                 .FirstOrDefaultAsync(); //busca o primeiro resultado correspondente ao id
+                 .AsNoTracking()
+                 .FirstOrDefaultAsync();
             }
             else
-                return await Task.FromResult(_context.Find<Pedido>(id));  
-            //se o id nao tiver resultado, tente encontrar e la no controller vai retornar uma mensagem pedindo para digitar um id valido
+                return await Task.FromResult(_context.Find<Pedido>(id));
         }
     }
 }

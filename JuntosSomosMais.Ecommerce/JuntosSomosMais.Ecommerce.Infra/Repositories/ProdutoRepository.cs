@@ -18,49 +18,44 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
         
         public async Task Cadastrar(Produto produto)
         {
-            _context.Produtos.Add(produto); //adicionar as informacoes do produto
-            await _context.SaveChangesAsync(); //salvar essas informacoes no banco de dados
+            _context.Produtos.Add(produto);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<Produto> ConsultarPorId(GetFilterProduto filter)
         {
             var result = _context
-                .Produtos //acessar as informacoes do banco de dados da tabela Produtos que foi definido no ApplicationContext
+                .Produtos
                 .AsQueryable();
 
-            if (filter.Id != 0) //se o id for diferente de 0, retorne as informacoes do id correspondente
-            {
+            if (filter.Id != 0)            
                 result = result.Where(w => w.Id == filter.Id);
-            }
-            else if (!string.IsNullOrEmpty(filter.Produto)) //se o nome do produto nao for vazio, retorne as informacoes do produto
-                                                            //com o nome correspondente
-            {
+            
+            else if (!string.IsNullOrEmpty(filter.Produto))
                 result = result.Where(w => w.Nome.Contains(filter.Produto));
-            }
-            else //se o id for 0 e o produto for vazio, atribua nulo ao filtro que no Controller
-                 //vai retornar uma mensagem pedindo um id ou um nome de produto valido
+            else
             {
                 filter = null;
                 return await Task.FromResult(_context.Find<Produto>(filter));
-            }
+            }             
 
             return await result
-                .AsNoTracking() //retorna uma consulta e as informacoes nao serao armazenadas 
-                .FirstOrDefaultAsync(); //busca o primeiro resultado correspondente àquele id
+                .AsNoTracking() 
+                .FirstOrDefaultAsync();
         }
 
         public async Task Atualizar(Produto produto)
         {
-            _context.Entry(produto).State = EntityState.Modified; //busque o produto a ser atualizado e atualize
-            await _context.SaveChangesAsync(); //salve as alteracoes
+            _context.Entry(produto).State = EntityState.Modified;
+            await _context.SaveChangesAsync();
         }
 
 
         public async Task Excluir(int id)
         {
-            var produto = await _context.Produtos.FindAsync(id); //encontre o prroduto correspondente a esse id
-            _context.Produtos.Remove(produto); //remova
-            await _context.SaveChangesAsync(); //salve as alteracoes
+            var produto = await _context.Produtos.FindAsync(id);
+            _context.Produtos.Remove(produto);
+            await _context.SaveChangesAsync();
         }
     }
 }

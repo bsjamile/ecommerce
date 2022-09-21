@@ -16,17 +16,17 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
         }
         public async Task Cadastrar(Cliente cliente)
         {
-            _context.Clientes.Add(cliente); //adicionar as informacoes do cliente 
-            await _context.SaveChangesAsync(); //salvar essas informacoes no banco de dados
+            _context.Clientes.Add(cliente);
+            await _context.SaveChangesAsync();
         }
 
         public async Task<IEnumerable<Cliente>> Listar()
         {
             return await _context
-                .Clientes //acessar as informacoes do banco de dados da tabela Clientes que foi definido no ApplicationContext
-                .Include(id => id.Endereco) //incluir as informacoes da tabela enderecos quando for listar os clientes
-                .AsNoTracking() //retorna uma consulta e as informacoes nao serao armazenadas 
-                .ToListAsync(); //lista as informacoes
+                .Clientes
+                .Include(id => id.Endereco) 
+                .AsNoTracking() 
+                .ToListAsync();
         }
     }
 }

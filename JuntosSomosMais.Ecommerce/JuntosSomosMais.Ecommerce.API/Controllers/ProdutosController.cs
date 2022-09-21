@@ -51,8 +51,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         [HttpPut]
         public async Task<IActionResult> Put([FromBody] AtualizarProdutoRequest produto)
         {
-            await _useCaseAtualizarProduto.ExecuteAsync(produto);
-            return NoContent();
+           return await _useCaseAtualizarProduto.ExecuteAsync(produto);
         }
 
         [HttpDelete("{id}")]
