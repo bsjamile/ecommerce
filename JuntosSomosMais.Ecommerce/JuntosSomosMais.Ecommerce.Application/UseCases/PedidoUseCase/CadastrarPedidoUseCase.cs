@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using AutoMapper;
-using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
+﻿using JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido;
 using JuntosSomosMais.Ecommerce.Core.Entities;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
 using Microsoft.AspNetCore.Mvc;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 {

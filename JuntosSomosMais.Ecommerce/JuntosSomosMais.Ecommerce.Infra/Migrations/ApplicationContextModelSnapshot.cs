@@ -3,7 +3,6 @@ using System;
 using JuntosSomosMais.Ecommerce.Infra.DataBase;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace JuntosSomosMais.Ecommerce.Infra.Migrations
@@ -15,16 +14,13 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("ProductVersion", "5.0.17")
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.17");
 
             modelBuilder.Entity("JuntosSomosMais.Ecommerce.Core.Entities.Cliente", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("CPF")
                         .IsRequired()
@@ -38,7 +34,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                         .HasColumnType("VARCHAR(50)");
 
                     b.Property<int>("IdEndereco")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
                         .IsRequired()
@@ -64,8 +60,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Bairro")
                         .IsRequired()
@@ -110,14 +105,13 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<DateTime>("DataPedido")
                         .HasColumnType("DATETIME");
 
                     b.Property<int>("IdCliente")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.HasKey("Id");
 
@@ -130,14 +124,13 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("IdPedido")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("IdProduto")
-                        .HasColumnType("int");
+                        .HasColumnType("INTEGER");
 
                     b.Property<int>("Quantidade")
                         .HasColumnType("INT");
@@ -155,8 +148,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                        .HasColumnType("INTEGER");
 
                     b.Property<string>("Nome")
                         .IsRequired()

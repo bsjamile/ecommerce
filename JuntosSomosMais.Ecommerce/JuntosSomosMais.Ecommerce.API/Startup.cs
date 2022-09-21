@@ -56,14 +56,14 @@ namespace JuntosSomosMais.Ecommerce.API
 
             services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, IActionResult>, CadastrarProdutoUseCase>();
-            services.AddScoped<IUseCaseAsync<AtualizarProdutoRequest, IActionResult >, AtualizarProdutoUseCase>();
+            services.AddScoped<IUseCaseAsync<AtualizarProdutoRequest, IActionResult>, AtualizarProdutoUseCase>();
             services.AddScoped<IUseCaseAsync<int, IActionResult>, DeletarProdutoUseCase>();
 
             services.AddAutoMapper(typeof(MappingProfile)); //permite o mapeamento das informacoes presentes nas diferentes classes
 
             services.AddDbContext<ApplicationContext>(options =>
-                options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")) //onde esta o caminho do banco de dados
-                .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
+            options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")) //onde esta o caminho do banco de dados
+            .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
              );
 
             services.AddControllers();

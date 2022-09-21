@@ -5,11 +5,13 @@ VisualStudioVersion = 17.2.32526.322
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.API", "JuntosSomosMais.Ecommerce.API\JuntosSomosMais.Ecommerce.API.csproj", "{9955F4FB-762C-4C39-A35D-C05A00B11161}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntosSomosMais.Ecommerce.Application", "JuntosSomosMais.Ecommerce.Application\JuntosSomosMais.Ecommerce.Application.csproj", "{9CDC60D7-26C8-4585-ACC2-22082EA7E913}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.Application", "JuntosSomosMais.Ecommerce.Application\JuntosSomosMais.Ecommerce.Application.csproj", "{9CDC60D7-26C8-4585-ACC2-22082EA7E913}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntosSomosMais.Ecommerce.Core", "JuntosSomosMais.Ecommerce.Core\JuntosSomosMais.Ecommerce.Core.csproj", "{D8D0CB65-2547-4E8D-BA67-8C7507164DC6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.Core", "JuntosSomosMais.Ecommerce.Core\JuntosSomosMais.Ecommerce.Core.csproj", "{D8D0CB65-2547-4E8D-BA67-8C7507164DC6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntosSomosMais.Ecommerce.Infra", "JuntosSomosMais.Ecommerce.Infra\JuntosSomosMais.Ecommerce.Infra.csproj", "{DE4A7B4D-E305-4818-BACF-EDF1751B522A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.Infra", "JuntosSomosMais.Ecommerce.Infra\JuntosSomosMais.Ecommerce.Infra.csproj", "{DE4A7B4D-E305-4818-BACF-EDF1751B522A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntosSomosMais.Ecommerce.Teste", "JuntosSomosMais.Ecommerce.Teste\JuntosSomosMais.Ecommerce.Teste.csproj", "{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{DE4A7B4D-E305-4818-BACF-EDF1751B522A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DE4A7B4D-E305-4818-BACF-EDF1751B522A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DE4A7B4D-E305-4818-BACF-EDF1751B522A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

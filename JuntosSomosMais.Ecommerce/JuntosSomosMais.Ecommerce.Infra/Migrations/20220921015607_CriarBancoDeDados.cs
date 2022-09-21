@@ -3,18 +3,16 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace JuntosSomosMais.Ecommerce.Infra.Migrations
 {
-    public partial class CriarBancoDeDados : Migration 
+    public partial class CriarBancoDeDados : Migration
     {
-        //configuracoes geradas atraves do migrations a partir do que foi definido no ApplicationContext
-        //para criar as tabelas automaticamente no banco de dados
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
                 name: "enderecos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Rua = table.Column<string>(type: "VARCHAR(70)", nullable: false),
                     Bairro = table.Column<string>(type: "VARCHAR(50)", nullable: false),
                     Numero = table.Column<string>(type: "VARCHAR(10)", nullable: false),
@@ -34,8 +32,8 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 name: "produtos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "VARCHAR(50)", nullable: false),
                     Preco = table.Column<double>(type: "FLOAT", nullable: false)
                 },
@@ -48,15 +46,15 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 name: "clientes",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     Nome = table.Column<string>(type: "VARCHAR(70)", nullable: false),
                     DataNasc = table.Column<DateTime>(type: "DATETIME", nullable: false),
                     CPF = table.Column<string>(type: "VARCHAR(20)", nullable: false),
                     Telefone = table.Column<string>(type: "VARCHAR(20)", nullable: false),
                     Email = table.Column<string>(type: "VARCHAR(50)", nullable: false),
                     Senha = table.Column<string>(type: "VARCHAR(20)", nullable: false),
-                    IdEndereco = table.Column<int>(type: "int", nullable: false)
+                    IdEndereco = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -73,10 +71,10 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 name: "pedidos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
                     DataPedido = table.Column<DateTime>(type: "DATETIME", nullable: false),
-                    IdCliente = table.Column<int>(type: "int", nullable: false)
+                    IdCliente = table.Column<int>(type: "INTEGER", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -93,10 +91,10 @@ namespace JuntosSomosMais.Ecommerce.Infra.Migrations
                 name: "pedidos_produtos",
                 columns: table => new
                 {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IdPedido = table.Column<int>(type: "int", nullable: false),
-                    IdProduto = table.Column<int>(type: "int", nullable: false),
+                    Id = table.Column<int>(type: "INTEGER", nullable: false)
+                        .Annotation("Sqlite:Autoincrement", true),
+                    IdPedido = table.Column<int>(type: "INTEGER", nullable: false),
+                    IdProduto = table.Column<int>(type: "INTEGER", nullable: false),
                     Quantidade = table.Column<int>(type: "INT", nullable: false)
                 },
                 constraints: table =>
