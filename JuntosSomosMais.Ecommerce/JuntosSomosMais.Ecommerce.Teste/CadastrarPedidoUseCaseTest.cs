@@ -29,24 +29,5 @@ namespace JuntosSomosMais.Ecommerce.Teste
 
 
         }
-        /*
-        [TestMethod]
-        public void ExecuteAsync_SePedidoTiverProdutoComQuantidadeZero_RetornarBadRequestResult()
-        {
-            //Arrange
-            Mock<IPedidoRepository> pedidoRepository = new Mock<IPedidoRepository>();
-            pedidoRepository.Setup(s => s.Cadastrar(It.IsAny<Pedido>()))
-                .Returns(Task.CompletedTask);
-
-            var useCase = new CadastrarPedidoUseCase(pedidoRepository.Object);
-
-            //Act
-            var response = useCase.ExecuteAsync(null).Result;
-
-            //Assert
-            Assert.IsTrue(response.GetType() == typeof(BadRequestResult));
-
-
-        }*/
     }
 }
