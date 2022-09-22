@@ -20,9 +20,9 @@ O sistema deve permitir cadastro de novos clientes, incluindo dados pessoais e d
 
 3. Caso queira rodar a aplicacao no sql server, é preciso apagar a configuracao referente ao SQLite de dentro da da startup e do appsettings e descomentar a configuracao referente ao sql
 
-3.1 Também é preciso deletar as migrations da aplicação pois são referentes ao banco SQLite
+4. Também é preciso deletar as migrations da aplicação pois são referentes ao banco SQLite
 
-3.2 As inserções de dados do banco sql server podem ser realizadas através do script sql ou rodando novamente o migrations após realizar as alterações para o banco sql server
+5. As inserções de dados do banco sql server podem ser realizadas através do script sql ou rodando novamente o migrations após realizar as alterações para o banco sql server
 
 ## Endpoints
 
