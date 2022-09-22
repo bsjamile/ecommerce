@@ -6,7 +6,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
 {
     public class EnderecoConfiguration : IEntityTypeConfiguration<Endereco>
     {
-        public void Configure(EntityTypeBuilder<Endereco> builder) //configuracao das tabelas e suas colunas do banco de dados
+        public void Configure(EntityTypeBuilder<Endereco> builder)
         {
             builder.ToTable("enderecos");
             builder.HasKey(pk => pk.Id);

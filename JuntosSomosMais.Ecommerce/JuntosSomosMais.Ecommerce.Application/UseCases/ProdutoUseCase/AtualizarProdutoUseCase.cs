@@ -1,13 +1,8 @@
 ﻿using AutoMapper;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
-using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Core.Entities;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase

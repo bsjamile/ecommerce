@@ -7,19 +7,13 @@ using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Infra.Repositories
 {
-    public class PedidoRepository : IPedidoRepository //herda o que foi atribuido na interface do pedido
+    public class PedidoRepository : IPedidoRepository 
     {
-        private readonly ApplicationContext _context; //representa o banco de dados configurado na ApplicationContext
+        private readonly ApplicationContext _context;
         public PedidoRepository(ApplicationContext context)
         {
             _context = context;
         }
-        public async Task Cadastrar(Pedido pedido)
-        {
-            _context.Pedidos.Add(pedido);
-            await _context.SaveChangesAsync();
-        }
-
         public async Task<Pedido> ConsultarPorId(int id)
         {
             var result = _context
@@ -39,5 +33,10 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             else
                 return await Task.FromResult(_context.Find<Pedido>(id));
         }
+        public async Task Cadastrar(Pedido pedido)
+        {
+            _context.Pedidos.Add(pedido);
+            await _context.SaveChangesAsync();
+        }        
     }
 }

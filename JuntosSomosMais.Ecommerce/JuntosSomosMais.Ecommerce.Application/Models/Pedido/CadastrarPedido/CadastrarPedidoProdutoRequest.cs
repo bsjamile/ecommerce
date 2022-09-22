@@ -7,6 +7,5 @@
         
         //como a finalidade é cadastrar um novo pedido,
         //nao utiliza o private no set para que seja possivel realizar o cadastro
-        
     }
 }

@@ -11,8 +11,6 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente
         public string CPF { get; private set; }
         public string Email { get; private set; }
         public string Senha { get; private set; }
-        public ListarClienteEnderecoResponse Endereco { get; private set; } //propriedade de Navegacao
-
-        //atraves da propriedade de navegacao é possível retornar as informacoes de endereco
+        public ListarClienteEnderecoResponse Endereco { get; private set; } 
     }
 }

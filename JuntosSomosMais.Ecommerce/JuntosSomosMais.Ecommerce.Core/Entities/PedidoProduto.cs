@@ -1,8 +1,8 @@
 ﻿namespace JuntosSomosMais.Ecommerce.Core.Entities
 {
-    public class PedidoProduto //a entidade representa cada tabela e colunas dessa tabela no banco de dados
+    public class PedidoProduto 
     {
-        public PedidoProduto(int idProduto, int quantidade) //definicao de parametros que o PedidoProduto ira receber
+        public PedidoProduto(int idProduto, int quantidade) 
         {
             IdProduto = idProduto;
             Quantidade = quantidade;

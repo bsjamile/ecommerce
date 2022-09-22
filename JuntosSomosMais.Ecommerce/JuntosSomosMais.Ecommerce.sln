@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.C
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.Infra", "JuntosSomosMais.Ecommerce.Infra\JuntosSomosMais.Ecommerce.Infra.csproj", "{DE4A7B4D-E305-4818-BACF-EDF1751B522A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JuntosSomosMais.Ecommerce.Teste", "JuntosSomosMais.Ecommerce.Teste\JuntosSomosMais.Ecommerce.Teste.csproj", "{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "JuntosSomosMais.Ecommerce.Teste", "JuntosSomosMais.Ecommerce.Teste\JuntosSomosMais.Ecommerce.Teste.csproj", "{7FC710A3-625F-4D4F-9BCB-8F0ABAADE63C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

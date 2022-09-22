@@ -14,19 +14,18 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
         {
             _context = context;
         }
-        public async Task Cadastrar(Cliente cliente)
-        {
-            _context.Clientes.Add(cliente);
-            await _context.SaveChangesAsync();
-        }
-
         public async Task<IEnumerable<Cliente>> Listar()
         {
             return await _context
                 .Clientes
-                .Include(id => id.Endereco) 
-                .AsNoTracking() 
+                .Include(id => id.Endereco)
+                .AsNoTracking()
                 .ToListAsync();
         }
+        public async Task Cadastrar(Cliente cliente)
+        {
+            _context.Clientes.Add(cliente);
+            await _context.SaveChangesAsync();
+        }        
     }
 }

@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace JuntosSomosMais.Ecommerce.Core.Entities
 {
-    public class Pedido //a entidade representa cada tabela e colunas dessa tabela no banco de dados
+    public class Pedido 
     {
-        public Pedido(DateTime dataPedido, int idCliente, List<PedidoProduto> pedidoProdutos) //definicao de parametros que o Pedido ira receber
+        public Pedido(DateTime dataPedido, int idCliente, List<PedidoProduto> pedidoProdutos) 
         {
             DataPedido = dataPedido;
             IdCliente = idCliente;

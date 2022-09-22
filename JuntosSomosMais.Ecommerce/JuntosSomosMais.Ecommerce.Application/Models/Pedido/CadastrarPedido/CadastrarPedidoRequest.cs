@@ -8,7 +8,6 @@ namespace JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido
         public List<CadastrarPedidoProdutoRequest> Produtos { get; set; } 
 
         //o list lista as informações do objeto Produtos para que seja possível
-        //cadastrar vários produtos em um pedido       
-        
+        //cadastrar vários produtos em um pedido             
     }
 }

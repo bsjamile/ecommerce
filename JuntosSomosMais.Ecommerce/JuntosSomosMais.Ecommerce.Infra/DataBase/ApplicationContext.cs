@@ -5,7 +5,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
 {
     public class ApplicationContext : DbContext
     {
-        // o EntityFramework possibilita o acesso e os inputs no banco de dados
+        // o EntityFramework possibilita a conexao com o banco de dados
 
         public DbSet<Cliente> Clientes { get; set; }
         public DbSet<Pedido> Pedidos { get; set; }

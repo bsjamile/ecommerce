@@ -7,8 +7,8 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 {
     public class ConsultarPedidoPorIdUseCase : IUseCaseAsync<int, ConsultarPedidoPorIdResponse>
     {
-        public readonly IPedidoRepository _pedidoRepository; //representacao do repositorio para chamar a task que deseja executar
-        public readonly IMapper _mapper; //mapper para permitir o mapeamento das informacoes
+        public readonly IPedidoRepository _pedidoRepository;
+        public readonly IMapper _mapper;
         public ConsultarPedidoPorIdUseCase(IPedidoRepository pedidoRepository,
             IMapper mapper)
         {

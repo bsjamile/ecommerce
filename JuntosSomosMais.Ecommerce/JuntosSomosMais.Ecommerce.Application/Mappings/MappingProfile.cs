@@ -22,15 +22,18 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
 
         public MappingProfile() 
         {
-            CreateMap<Endereco, ListarClienteEnderecoResponse>()
-                .ForMember(dest => dest.IdEndereco, fonte => fonte.MapFrom(src => src.Id));
-
             CreateMap<Cliente, ListarClienteResponse>()
                 .ForMember(dest => dest.IdCliente, fonte => fonte.MapFrom(src => src.Id));
 
-            CreateMap<CadastrarClienteEnderecoRequest, Endereco>();
+            CreateMap<Endereco, ListarClienteEnderecoResponse>()
+                .ForMember(dest => dest.IdEndereco, fonte => fonte.MapFrom(src => src.Id));         
 
             CreateMap<CadastrarClienteRequest, Cliente>();
+
+            CreateMap<CadastrarClienteEnderecoRequest, Endereco>();
+
+            CreateMap<Pedido, ConsultarPedidoPorIdResponse>()
+                .ForMember(dest => dest.Produtos, fonte => fonte.MapFrom(src => src.PedidoProdutos));
 
             CreateMap<Cliente, ConsultarPedidoPorIdClienteResponse>();
 
@@ -38,19 +41,16 @@ namespace JuntosSomosMais.Ecommerce.Application.Mappings
                 .ForMember(dest => dest.Produto, fonte => fonte.MapFrom(src => src.Produto.Nome))
                 .ForMember(dest => dest.PrecoUnitario, fonte => fonte.MapFrom(src => src.Produto.Preco));
 
-            CreateMap<Pedido, ConsultarPedidoPorIdResponse>()
-                .ForMember(dest => dest.Produtos, fonte => fonte.MapFrom(src => src.PedidoProdutos));
+            CreateMap<CadastrarPedidoRequest, Pedido>();
 
             CreateMap<CadastrarPedidoProdutoRequest, PedidoProduto>()
                 .ForMember(dest => dest.IdProduto, fonte => fonte.MapFrom(src => src.IdProduto));
 
-            CreateMap<CadastrarPedidoRequest,Pedido >();
-
-            CreateMap<Produto, ConsultarProdutoPorIdResponse>()
-                .ForMember(dest => dest.IdProduto, fonte => fonte.MapFrom(src => src.Id));
-
             CreateMap<GetFilterProduto, Produto>()
                 .ForMember(dest => dest.Nome, fonte => fonte.MapFrom(src => src.Produto));
+
+            CreateMap<Produto, ConsultarProdutoPorIdResponse>()
+                .ForMember(dest => dest.IdProduto, fonte => fonte.MapFrom(src => src.Id));            
 
             CreateMap<CadastrarProdutoRequest, Produto>();
 

@@ -6,7 +6,7 @@ namespace JuntosSomosMais.Ecommerce.Infra.DataBase
 {
     public class ProdutoConfiguration : IEntityTypeConfiguration<Produto>
     {
-        public void Configure(EntityTypeBuilder<Produto> builder)  //configuracao das tabelas e suas colunas do banco de dados
+        public void Configure(EntityTypeBuilder<Produto> builder) 
         {
             builder.ToTable("produtos");
             builder.HasKey(pk => pk.Id);

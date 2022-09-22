@@ -1,4 +1,5 @@
-﻿using JuntosSomosMais.Ecommerce.Core.Repositories;
+﻿using JuntosSomosMais.Ecommerce.Core.Entities;
+using JuntosSomosMais.Ecommerce.Core.Repositories;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -13,8 +14,11 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
         }
 
         public async Task<IActionResult> ExecuteAsync(int id)
-        {
-            await _repository.Excluir(id);
+        {          
+            var produto = _repository.Excluir(id);
+
+            if (produto == null)
+                return new NotFoundObjectResult("Produto não encontrado!");
 
             return new OkObjectResult("Produto Deletado!");
         }

@@ -1,9 +1,7 @@
-﻿using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
-using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
+﻿using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
 using JuntosSomosMais.Ecommerce.Application.UseCases;
-using JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase;
 using JuntosSomosMais.Ecommerce.Core.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -44,13 +42,13 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
             return await _useCaseListarProduto.ExecuteAsync();
         }
 
-        [HttpGet("filter")]
+        [HttpGet("id")]
         public async Task<ActionResult<ConsultarProdutoPorIdResponse>> GetProdutoPorId([FromQuery] GetFilterProduto filter)
         {
             var response = await _useCaseConsultarProdutoPorId.ExecuteAsync(filter);
 
             if (response == null)
-                return new NotFoundObjectResult("Digite um ID ou um Produto Válido!"); //se o filtro recebido for nulo, retorne essa mensagem
+                return new NotFoundObjectResult("Digite um ID ou um Produto Válido!");
 
             return new OkObjectResult(response);
         }
@@ -66,15 +64,10 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
            return await _useCaseAtualizarProduto.ExecuteAsync(produto);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult> Delete(int id)
+        [HttpDelete("id")]
+        public async Task<IActionResult> Delete(int id)
         {
-            var deletarProduto = await _useCaseDeletarProduto.ExecuteAsync(id);
-
-            if (deletarProduto == null)
-                return new NotFoundObjectResult("Não encontrado");
-
-            return NoContent();
+            return await _useCaseDeletarProduto.ExecuteAsync(id);
         }
     }
 }

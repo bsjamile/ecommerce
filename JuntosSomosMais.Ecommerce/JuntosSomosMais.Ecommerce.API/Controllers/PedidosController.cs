@@ -30,7 +30,7 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
             var response = await _useCaseConsultarPedidoPorId.ExecuteAsync(id);
 
             if (response == null)
-                return new NotFoundObjectResult("Digite um ID válido!"); //se o id recebido for nulo, retorne essa mensagem
+                return new NotFoundObjectResult("Digite um ID válido!");
 
             return new OkObjectResult(response);
         }

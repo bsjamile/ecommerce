@@ -38,32 +38,33 @@ namespace JuntosSomosMais.Ecommerce.API
 
         public void ConfigureServices(IServiceCollection services)
         {
+            /*
+           Injeção de dependencia para tornar as classes independentes das classes que normalmente dependeria
+           Desacopla as classes, o que as tornam independentes uma da outra
+           O que facilita na organizacao e manutencao do codigo
+           */
+
             services.AddScoped<IClienteRepository, ClienteRepository>();
             services.AddScoped<IPedidoRepository, PedidoRepository>();
-            services.AddScoped<IProdutoRepository, ProdutoRepository>();
-
-            /*
-            Injeção de dependencia para tornar as classes independentes das classes que normalmente dependeria
-            Desacopla as classes, o que as tornam independentes uma da outra
-            O que facilita na organizacao e manutencao do codigo
-            */
+            services.AddScoped<IProdutoRepository, ProdutoRepository>();           
 
             services.AddScoped<IUseCaseOneAsync<List<ListarClienteResponse>>, ListarClienteUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarClienteRequest, IActionResult>, CadastrarClienteUseCase>();
 
             services.AddScoped<IUseCaseAsync<int, ConsultarPedidoPorIdResponse>, ConsultarPedidoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarPedidoRequest, IActionResult>, CadastrarPedidoUseCase>();
-
-            services.AddScoped<IUseCaseOneAsync<List<ConsultarProdutoPorIdResponse>>, ListarProdutoUseCase>();
+            
             services.AddScoped<IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse>, ConsultarProdutoPorIdUseCase>();
             services.AddScoped<IUseCaseAsync<CadastrarProdutoRequest, IActionResult>, CadastrarProdutoUseCase>();
             services.AddScoped<IUseCaseAsync<AtualizarProdutoRequest, IActionResult>, AtualizarProdutoUseCase>();
+            services.AddScoped<IUseCaseOneAsync<List<ConsultarProdutoPorIdResponse>>, ListarProdutoUseCase>();
             services.AddScoped<IUseCaseAsync<int, IActionResult>, DeletarProdutoUseCase>();
 
             services.AddAutoMapper(typeof(MappingProfile)); //permite o mapeamento das informacoes presentes nas diferentes classes
 
             services.AddDbContext<ApplicationContext>(options =>
             options.UseSqlite(Configuration.GetConnectionString("DefaultConnection")) //onde esta o caminho do banco de dados
+            //options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"))
             .UseLoggerFactory(LoggerFactory.Create(builder => builder.AddConsole()))
              );
 
