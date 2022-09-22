@@ -24,12 +24,12 @@ O sistema deve permitir cadastro de novos clientes, incluindo dados pessoais e d
 
 ## Endpoints
 
-- GET/api/clientes
-- POST/api/clientes
-- GET/api/pedidos
-- POST/api/pedidos
-- GET/api/produtos
-- POST/api/produtos
-- PUT/api/produtos
-- GET/api/produtos/id
-- DELETE/api/produtos/id
+- GET/api/clientes - Lista todos os clientes
+- POST/api/clientes - Cadastra cliente
+- GET/api/pedidos - Consulta pedidos por ID
+- POST/api/pedidos - Cadastra pedido
+- GET/api/produtos - Lista todos os produtos
+- POST/api/produtos - Cadastra produto
+- PUT/api/produtos - Atualiza produto
+- GET/api/produtos/id - Consulta prooduto por ID
+- DELETE/api/produtos/id - Deleta produto
