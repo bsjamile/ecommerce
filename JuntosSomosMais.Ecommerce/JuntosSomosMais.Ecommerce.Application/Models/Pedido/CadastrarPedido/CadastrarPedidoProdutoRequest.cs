@@ -1,6 +1,6 @@
 ﻿namespace JuntosSomosMais.Ecommerce.Application.Models.Pedido.CadastrarPedido
 {
-    public class CadastrarPedidoProdutoRequest //informacoes solicitadas para cadastrar o pedido do cliente
+    public class CadastrarPedidoProdutoRequest
     {
         public int IdProduto { get; set; }
         public int Quantidade { get; set; } 

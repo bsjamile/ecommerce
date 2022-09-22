@@ -1,5 +1,6 @@
 ﻿using JuntosSomosMais.Ecommerce.Core.Entities;
 using JuntosSomosMais.Ecommerce.Core.Filters;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.Core.Repositories
@@ -8,7 +9,7 @@ namespace JuntosSomosMais.Ecommerce.Core.Repositories
     {
         //alem de ConsultarPorId, tambem vai ser atribuida a essa interface o que foi atribuida a interface IRepository,
         //ou seja, vai herdar a Task Cadastrar para o objeto Produto
-
+        Task<IEnumerable<Produto>> Listar();
         Task<Produto> ConsultarPorId(GetFilterProduto filter);
         Task Atualizar(Produto obj);
         Task Excluir(int id);

@@ -30,7 +30,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.PedidoUseCase
 
             await _pedidoRepository.Cadastrar(pedido);
 
-            return new OkResult();
+            return new OkObjectResult("Pedido realizado!");
         }
     }
 }

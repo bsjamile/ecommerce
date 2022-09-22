@@ -16,7 +16,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
         {
             await _repository.Excluir(id);
 
-            return new OkResult();
+            return new OkObjectResult("Produto Deletado!");
         }
     }
 }

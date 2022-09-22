@@ -3,6 +3,7 @@ using JuntosSomosMais.Ecommerce.Core.Filters;
 using JuntosSomosMais.Ecommerce.Core.Repositories;
 using JuntosSomosMais.Ecommerce.Infra.DataBase;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -56,6 +57,14 @@ namespace JuntosSomosMais.Ecommerce.Infra.Repositories
             var produto = await _context.Produtos.FindAsync(id);
             _context.Produtos.Remove(produto);
             await _context.SaveChangesAsync();
+        }
+
+        public async Task<IEnumerable<Produto>> Listar()
+        {
+            return await _context
+                .Produtos
+                .AsNoTracking()
+                .ToListAsync();
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace JuntosSomosMais.Ecommerce.Application.Models.Cliente.CadastrarCliente
 {
-    public class CadastrarClienteEnderecoRequest //informacoes solicitadas para cadastrar o endereco do cliente
+    public class CadastrarClienteEnderecoRequest 
     {
         public string Rua { get; set; }
         public string Bairro { get; set; }

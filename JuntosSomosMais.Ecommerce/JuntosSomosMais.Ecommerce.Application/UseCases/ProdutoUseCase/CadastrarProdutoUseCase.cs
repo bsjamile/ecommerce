@@ -27,7 +27,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase
 
             await _produtoRepository.Cadastrar(produto);
 
-            return new OkResult();
+            return new OkObjectResult("Produto Cadastrado!");
         }
     }
 }

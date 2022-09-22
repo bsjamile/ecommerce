@@ -27,7 +27,7 @@ namespace JuntosSomosMais.Ecommerce.Application.UseCases.ClienteUseCase
 
             await _clienteRepository.Cadastrar(cliente);
 
-            return new OkResult();
+            return new OkObjectResult("Cliente cadastrado!");
         }
     }
 }

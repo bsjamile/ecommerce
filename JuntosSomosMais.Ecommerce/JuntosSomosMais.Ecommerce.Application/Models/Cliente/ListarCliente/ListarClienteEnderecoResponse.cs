@@ -2,8 +2,6 @@
 {
     public class ListarClienteEnderecoResponse 
     {
-        //informacoes de endereco do cliente que sao retornadas quando é solicitado a listagem dos clientes
-
         public int IdEndereco { get; private set; }
         public string Rua { get; private set; }
         public string Bairro { get; private set; }

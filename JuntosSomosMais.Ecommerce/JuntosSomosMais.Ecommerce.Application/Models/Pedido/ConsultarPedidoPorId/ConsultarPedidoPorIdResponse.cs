@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace JuntosSomosMais.Ecommerce.Application.Models.Pedido.ConsultarPedidoPorId
 {
-    public class ConsultarPedidoPorIdResponse //informacoes retornadas quando um pedido é consultado
+    public class ConsultarPedidoPorIdResponse
     {
         public DateTime DataPedido { get; private set; }
         public ConsultarPedidoPorIdClienteResponse Cliente { get; private set; } //atraves da propriedade de navegacao,

@@ -1,9 +1,12 @@
-﻿using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
+﻿using JuntosSomosMais.Ecommerce.Application.Models.Cliente.ListarCliente;
+using JuntosSomosMais.Ecommerce.Application.Models.Produto.AtualizarProdutoRequest;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.CadastrarProduto;
 using JuntosSomosMais.Ecommerce.Application.Models.Produto.ConsultarProdutoPorId;
 using JuntosSomosMais.Ecommerce.Application.UseCases;
+using JuntosSomosMais.Ecommerce.Application.UseCases.ProdutoUseCase;
 using JuntosSomosMais.Ecommerce.Core.Filters;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace JuntosSomosMais.Ecommerce.API.Controllers
@@ -18,21 +21,30 @@ namespace JuntosSomosMais.Ecommerce.API.Controllers
         public readonly IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> _useCaseConsultarProdutoPorId;
         public readonly IUseCaseAsync<CadastrarProdutoRequest, IActionResult> _useCaseCadastrarProduto;
         public readonly IUseCaseAsync<AtualizarProdutoRequest, IActionResult> _useCaseAtualizarProduto;
+        public readonly IUseCaseOneAsync<List<ConsultarProdutoPorIdResponse>> _useCaseListarProduto;
         public readonly IUseCaseAsync<int, IActionResult> _useCaseDeletarProduto;
         //Injecao de Dependencia
 
         public ProdutosController(IUseCaseAsync<GetFilterProduto, ConsultarProdutoPorIdResponse> useCaseConsultarProdutoPorId,
                                  IUseCaseAsync<CadastrarProdutoRequest, IActionResult> useCaseCadastrarProduto,                                 
                                  IUseCaseAsync<AtualizarProdutoRequest, IActionResult> useCaseAtualizarProduto,
-                                 IUseCaseAsync<int, IActionResult> useCaseDeletarProduto)
+                                 IUseCaseAsync<int, IActionResult> useCaseDeletarProduto,
+                                 IUseCaseOneAsync<List<ConsultarProdutoPorIdResponse>> useCaseListarProduto)
         {
             _useCaseConsultarProdutoPorId = useCaseConsultarProdutoPorId;
             _useCaseCadastrarProduto = useCaseCadastrarProduto;
             _useCaseAtualizarProduto = useCaseAtualizarProduto;
             _useCaseDeletarProduto = useCaseDeletarProduto;
+            _useCaseListarProduto = useCaseListarProduto;
         }
 
         [HttpGet]
+        public async Task<List<ConsultarProdutoPorIdResponse>> GetListarProduto()
+        {
+            return await _useCaseListarProduto.ExecuteAsync();
+        }
+
+        [HttpGet("filter")]
         public async Task<ActionResult<ConsultarProdutoPorIdResponse>> GetProdutoPorId([FromQuery] GetFilterProduto filter)
         {
             var response = await _useCaseConsultarProdutoPorId.ExecuteAsync(filter);
